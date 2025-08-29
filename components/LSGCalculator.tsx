@@ -62,7 +62,7 @@ export default function LSGCalculator() {
   const [selectedRoleCategory, setSelectedRoleCategory] = useState<string>("");
   const [aggregates, setAggregates] = useState<Aggregates | null>(null);
   const [inclusions, setInclusions] = useState<Inclusions>(DEFAULTS);
-  const [debug, setDebug] = useState<string>("Component loaded");
+
   
   // Role categories state
   const [roleCategories, setRoleCategories] = useState<RoleCategory[]>([]);
@@ -114,19 +114,16 @@ export default function LSGCalculator() {
   }, []); // Empty dependency array - runs once on mount
 
   useEffect(() => {
-    setDebug("Component mounted and useEffect running");
     console.log('Fetching data for state:', state);
     fetch(`/api/calculator/aggregates?state=${encodeURIComponent(state)}`)
       .then(r => r.json())
       .then(data => {
         console.log('API response:', data);
         setAggregates(data.aggregates);
-        setDebug(`API data loaded: ${JSON.stringify(data.aggregates)}`);
       })
       .catch((error) => {
         console.error('API error:', error);
         setAggregates(null);
-        setDebug(`API error: ${error.message}`);
       });
   }, [state]);
 
@@ -215,29 +212,7 @@ export default function LSGCalculator() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Debug Info - Hidden in production */}
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 shadow-sm">
-          <p className="text-sm font-medium text-amber-800">Debug: {debug}</p>
-          <button 
-            onClick={() => {
-              setDebug("Manual button clicked - testing API call");
-              fetch(`/api/calculator/aggregates?state=${encodeURIComponent(state)}`)
-                .then(r => r.json())
-                .then(data => {
-                  console.log('Manual API response:', data);
-                  setAggregates(data.aggregates);
-                  setDebug(`Manual API success: ${JSON.stringify(data.aggregates)}`);
-                })
-                .catch((error) => {
-                  console.error('Manual API error:', error);
-                  setDebug(`Manual API error: ${error.message}`);
-                });
-            }}
-            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm"
-          >
-            Test API Call Manually
-          </button>
-        </div>
+
 
         {/* Enhanced Header Section */}
         <div className="text-center mb-16">
