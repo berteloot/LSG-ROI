@@ -3,9 +3,6 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 
-// Temporary build ID to help debug bundle issues
-export const runtimeBuildId = process.env.NEXT_RUNTIME || "dev";
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {

@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "postinstall": "prisma generate",
-    "render-build": "prisma generate && next build"
+    "render-build": "npm run build"
   },
   "dependencies": {
     "next": "14.0.4",

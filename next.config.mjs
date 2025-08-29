@@ -6,10 +6,6 @@ const nextConfig = {
   experimental: {
     // Remove appDir as it's no longer experimental
   },
-  // Ensure proper environment variable handling
-  env: {
-    CUSTOM_KEY: process.env.CUSTOM_KEY,
-  },
 }
 
 export default nextConfig
