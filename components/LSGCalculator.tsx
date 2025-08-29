@@ -308,18 +308,7 @@ export default function LSGCalculator() {
                 {selectedRole && (
                   <p className="text-sm text-gray-500 mt-3 px-4 py-2 bg-gray-50 rounded-lg">{selectedRole.description}</p>
                 )}
-                {/* Debug info */}
-                <div className="text-xs text-gray-400 mt-2">
-                  Debug: {roleCategories.length} categories loaded, selected: {selectedRoleCategory}
-                  {selectedRole && (
-                    <div>
-                      Role: {selectedRole.name} | Monthly Cost: ${selectedRole.monthlyCost}
-                      {selectedRole.monthlyCost > 0 ? ' (Using role cost)' : ' (Using 60% fallback)'}
-                    </div>
-                  )}
-                  <div>Loading state: {roleCategoriesLoading ? 'true' : 'false'}</div>
-                  <div>First category: {roleCategories[0]?.name || 'none'}</div>
-                </div>
+
               </div>
 
               {/* Base Salary */}
