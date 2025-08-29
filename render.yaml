@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: roi-lean-calculator
+    env: node
+    plan: starter
+    buildCommand: npm run render-build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: NEXTAUTH_SECRET
+        generateValue: true
+      - key: NEXTAUTH_URL
+        sync: false
+    healthCheckPath: /api/health
+    autoDeploy: true
+
+databases:
+  - name: roi-lean-postgres
+    databaseName: roi_lean
+    user: roi_lean_user
+    plan: starter
