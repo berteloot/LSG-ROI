@@ -14,8 +14,11 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <Calculator className="w-8 h-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">ROI Calculator</span>
+              <img 
+                src="/LSG-Logo.jpeg" 
+                alt="LSG Logo" 
+                className="h-8 w-auto object-contain"
+              />
             </Link>
           </div>
           
