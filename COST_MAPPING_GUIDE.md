@@ -6,13 +6,13 @@ This guide explains how the cost mapping system works in the Investment Analysis
 
 ### **Components Overview**
 ```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Cost Mapping  │    │   Aggregates API │    │  B11 Calculator │
-│   (lib/costMapping.ts) │    │   (/api/calculator/aggregates) │    │   (components/B11Calculator.tsx) │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-         │                       │                       │
-         │                       │                       │
-         ▼                       ▼                       ▼
+┌─────────────────┐    ┌──────────────────┐
+│   Cost Mapping  │    │   Aggregates API │
+│   (lib/costMapping.ts) │    │   (/api/calculator/aggregates) │
+└─────────────────┘    └──────────────────┘
+         │                       │
+         │                       │
+         ▼                       ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                    Database (PostgreSQL)                        │
 │              ┌─────────────────────────────────┐                │
@@ -178,11 +178,6 @@ Edit the category arrays in the `categoriesFor` function to match your database 
 - Real-time cost calculations
 - Visual breakdown of costs
 
-### **B11 Calculator (`/b11`)**
-- State and base salary inputs
-- Category selection toggles
-- Comprehensive cost breakdown
-- Total employee cost calculation
 
 ### **Main Dashboard (`/`)**
 - Navigation to all calculators
