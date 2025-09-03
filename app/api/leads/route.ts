@@ -283,10 +283,6 @@ async function sendCalculationEmail(data: {
               <span class="checkmark">✓</span>
               <span>IT Infrastructure & Equipment</span>
             </div>
-            <div class="cost-item cost-excluded">
-              <span class="x-mark">✗</span>
-              <span>Real Estate & Facilities</span>
-            </div>
             <div class="cost-item cost-included">
               <span class="checkmark">✓</span>
               <span>Workforce Management</span>
@@ -331,7 +327,6 @@ Cost Categories Included in Your Calculation:
 - Employee Benefits: Included
 - Administrative Overhead: Included
 - IT Infrastructure & Equipment: Included
-- Real Estate & Facilities: Excluded
 - Workforce Management: Included
 
 This comparison shows the potential cost advantages of working with Lean Solutions Group versus keeping these roles in-house.
