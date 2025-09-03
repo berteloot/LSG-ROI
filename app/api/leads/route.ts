@@ -265,14 +265,32 @@ async function sendCalculationEmail(data: {
             </div>
           </div>
           
-          <div class="section-title">Which costs were included in your calculation?</div>
+          <div class="section-title">Cost Categories Included in Your Calculation</div>
           <div class="cost-grid">
-            ${costBreakdown.map(item => `
-              <div class="cost-item ${item.included ? 'cost-included' : 'cost-excluded'}">
-                <span class="${item.included ? 'checkmark' : 'x-mark'}">${item.included ? '✓' : '✗'}</span>
-                <span>${item.included ? 'Included' : 'Excluded'}</span>
-              </div>
-            `).join('')}
+            <div class="cost-item cost-included">
+              <span class="checkmark">✓</span>
+              <span>Payroll Taxes</span>
+            </div>
+            <div class="cost-item cost-included">
+              <span class="checkmark">✓</span>
+              <span>Employee Benefits</span>
+            </div>
+            <div class="cost-item cost-included">
+              <span class="checkmark">✓</span>
+              <span>Administrative Overhead</span>
+            </div>
+            <div class="cost-item cost-included">
+              <span class="checkmark">✓</span>
+              <span>IT Infrastructure & Equipment</span>
+            </div>
+            <div class="cost-item cost-excluded">
+              <span class="x-mark">✗</span>
+              <span>Real Estate & Facilities</span>
+            </div>
+            <div class="cost-item cost-included">
+              <span class="checkmark">✓</span>
+              <span>Workforce Management</span>
+            </div>
           </div>
           
           <p>This comparison shows the potential cost advantages of working with Lean Solutions Group versus keeping these roles in-house.</p>
@@ -308,8 +326,13 @@ Your Business Profile:
 - Monthly Salary per FTE: $${baseMonthlySalary.toLocaleString()}
 - Number of FTEs: ${fteCount}
 
-Cost Breakdown:
-${costBreakdown.map(item => `- ${item.name}: ${item.included ? 'Included' : 'Excluded'}`).join('\n')}
+Cost Categories Included in Your Calculation:
+- Payroll Taxes: Included
+- Employee Benefits: Included
+- Administrative Overhead: Included
+- IT Infrastructure & Equipment: Included
+- Real Estate & Facilities: Excluded
+- Workforce Management: Included
 
 This comparison shows the potential cost advantages of working with Lean Solutions Group versus keeping these roles in-house.
 
