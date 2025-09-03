@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { computeTotals, type Aggregates } from "@/lib/roi";
 import { type InclusionKey } from "@/lib/costMapping";
-import { Building2, Briefcase, DollarSign, Users, Lightbulb, TrendingUp, Calculator, Target, Zap, Lock, Mail, Building, CheckCircle } from "lucide-react";
+import { Building2, Briefcase, DollarSign, Users, Lightbulb, TrendingUp, Calculator, Target, Lock, Mail, Building, CheckCircle } from "lucide-react";
 
 const STATES = [
   "District of Columbia", "Alabama","Alaska","Arizona","Arkansas","California","Colorado",
@@ -27,13 +27,14 @@ interface RoleCategory {
 
 type Inclusions = Record<InclusionKey, boolean>;
 
-const DEFAULTS: Inclusions = {
+// Use all available cost categories from the database (excluding real estate)
+const ALL_CATEGORIES: Inclusions = {
   payrollTaxes: true,
   customaryBenefits: true,
   administrativeOverhead: true,
-  itInfrastructure: false,
+  itInfrastructure: true,
   realEstate: false,
-  workforceManagement: false,
+  workforceManagement: true,
 };
 
 // Business email validation
@@ -61,7 +62,7 @@ export default function LSGCalculator() {
   const [fteCount, setFtes] = useState<number>(10);
   const [selectedRoleCategory, setSelectedRoleCategory] = useState<string>("");
   const [aggregates, setAggregates] = useState<Aggregates | null>(null);
-  const [inclusions, setInclusions] = useState<Inclusions>(DEFAULTS);
+  const [inclusions, setInclusions] = useState<Inclusions>(ALL_CATEGORIES);
 
   
   // Role categories state
@@ -154,7 +155,7 @@ export default function LSGCalculator() {
   // Safe division for per-FTE extras
   const perFteExtras = results && fteCount > 0 ? results.employerExtrasMonthlyAllFTEs / fteCount : 0;
 
-  const toggle = (k: InclusionKey) => setInclusions(prev => ({ ...prev, [k]: !prev[k] }));
+
   const money = (n: number) => n.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
   const pct = (n: number) => `${n.toFixed(1)}%`;
 
@@ -355,77 +356,7 @@ export default function LSGCalculator() {
               </div>
             </div>
 
-            {/* Enhanced Cost Inclusions */}
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-              <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <Zap className="w-6 h-6 text-yellow-500" />
-                Cost Inclusions
-              </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Select which employer costs to include in your calculation:
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                  <input 
-                    type="checkbox" 
-                    checked={inclusions.payrollTaxes} 
-                    onChange={() => toggle('payrollTaxes')}
-                    className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="font-medium text-gray-700">Payroll taxes</span>
-                </label>
-                
-                <label className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                  <input 
-                    type="checkbox" 
-                    checked={inclusions.customaryBenefits} 
-                    onChange={() => toggle('customaryBenefits')}
-                    className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="font-medium text-gray-700">Customary benefits</span>
-                </label>
-                
-                <label className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                  <input 
-                    type="checkbox" 
-                    checked={inclusions.administrativeOverhead} 
-                    onChange={() => toggle('administrativeOverhead')}
-                    className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="font-medium text-gray-700">Administrative overhead</span>
-                </label>
-                
-                <label className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                  <input 
-                    type="checkbox" 
-                    checked={inclusions.itInfrastructure} 
-                    onChange={() => toggle('itInfrastructure')}
-                    className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="font-medium text-gray-700">IT infrastructure, telecom & equipment</span>
-                </label>
-                
-                <label className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                  <input 
-                    type="checkbox" 
-                    checked={inclusions.realEstate} 
-                    onChange={() => toggle('realEstate')}
-                    className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="font-medium text-gray-700">Real estate & facilities</span>
-                </label>
-                
-                <label className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                  <input 
-                    type="checkbox" 
-                    checked={inclusions.workforceManagement} 
-                    onChange={() => toggle('workforceManagement')}
-                    className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="font-medium text-gray-700">Workforce management (training, QA, WFM tools, supervisors)</span>
-                </label>
-              </div>
-            </div>
+
           </div>
 
           {/* Right Section: Enhanced Calculation Results */}
@@ -454,7 +385,7 @@ export default function LSGCalculator() {
                 <div className="text-4xl font-bold text-blue-800 mb-2">
                   {results ? pct(results.totalEmployerLoadPct) : "—"}
                 </div>
-                <p className="text-blue-700 font-medium">Based on selected cost inclusions</p>
+                <p className="text-blue-700 font-medium">Calculation includes: payroll taxes, employee benefits, administrative overhead, IT infrastructure, workforce management, and the monthly cost of your selected role</p>
               </div>
 
               {/* Monthly Employer Extras per FTE */}
