@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Calculator, TrendingUp, DollarSign, MapPin, Toggle, BarChart3, Users } from 'lucide-react'
+import { Calculator, TrendingUp, DollarSign, MapPin, BarChart3, Users } from 'lucide-react'
 import { 
   InclusionKey, 
   getInclusionKeyDisplayName, 
@@ -194,7 +194,7 @@ export default function B11Calculator() {
       {/* Cost Category Toggles */}
       <div className="card">
         <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-          <Toggle className="w-5 h-5" />
+          <Calculator className="w-5 h-5" />
           Cost Categories
         </h3>
         <p className="text-gray-600 mb-6">
