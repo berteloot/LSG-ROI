@@ -15,7 +15,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <Logo variant="main" size={24} />
+              <Logo variant="main" size={40} />
             </Link>
           </div>
           
