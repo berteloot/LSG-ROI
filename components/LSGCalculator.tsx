@@ -240,6 +240,9 @@ export default function LSGCalculator() {
               <p className="text-trust-navy text-lg brand-body">Tell us about your business to get accurate cost comparisons</p>
             </div>
             
+            {/* Spacer to align with Total Employer Load */}
+            <div className="h-12"></div>
+            
             {/* Quick Start Guide */}
             <div className="bg-aqua-breeze border border-aqua-breeze rounded-2xl p-6 shadow-sm lsg-reveal">
               <div className="flex items-start gap-4">
@@ -371,7 +374,7 @@ export default function LSGCalculator() {
             </div>
             
             {/* Spacer to align with Quick Start Guide */}
-            <div className="h-16"></div>
+            <div className="h-4"></div>
 
             <div className="space-y-6">
               {/* Total Employer Load */}
