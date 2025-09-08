@@ -211,19 +211,18 @@ export default function LSGCalculator() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-12">
+    <div className="min-h-screen bg-paper-offwhite py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-
         {/* Enhanced Header Section */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-6">
+        <div className="text-center mb-16 lsg-reveal">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-lean-blue rounded-2xl mb-6 lsg-emphasize">
             <Calculator className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-5xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold text-midnight-core mb-6 brand-heading">
             LSG vs In-House Cost Calculator
           </h1>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-trust-navy max-w-4xl mx-auto leading-relaxed brand-body">
             Compare your current in-house costs with our managed services. See exactly how much you can save by switching to LSG.
           </p>
         </div>
@@ -233,23 +232,23 @@ export default function LSGCalculator() {
           {/* Left Section: Company Information */}
           <div className="space-y-8">
             {/* Section Header */}
-            <div className="text-center lg:text-left">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center justify-center lg:justify-start gap-3">
-                <Target className="w-8 h-8 text-blue-600" />
+            <div className="text-center lg:text-left lsg-reveal">
+              <h2 className="text-3xl font-bold text-midnight-core mb-3 flex items-center justify-center lg:justify-start gap-3">
+                <Target className="w-8 h-8 text-lean-blue" />
                 Company Information
               </h2>
-              <p className="text-gray-600 text-lg">Tell us about your business to get accurate cost comparisons</p>
+              <p className="text-trust-navy text-lg brand-body">Tell us about your business to get accurate cost comparisons</p>
             </div>
             
             {/* Quick Start Guide */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-sm">
+            <div className="bg-aqua-breeze border border-aqua-breeze rounded-2xl p-6 shadow-sm lsg-reveal">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                  <Lightbulb className="w-6 h-6 text-blue-600" />
+                <div className="flex-shrink-0 w-12 h-12 bg-lean-blue rounded-xl flex items-center justify-center">
+                  <Lightbulb className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-blue-900 mb-2">Quick Start Guide</h3>
-                  <p className="text-blue-700 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-trust-navy mb-2">Quick Start Guide</h3>
+                  <p className="text-trust-navy leading-relaxed brand-body">
                     Fill out these details to see your personalized cost comparison. The more accurate your information, the better we can estimate your potential savings!
                   </p>
                 </div>
@@ -259,17 +258,17 @@ export default function LSGCalculator() {
             {/* Form Fields */}
             <div className="space-y-8">
               {/* State Selection */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
+                <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <Building2 className="w-5 h-5 text-blue-600" />
+                    <div className="w-10 h-10 bg-lean-blue rounded-lg flex items-center justify-center">
+                      <Building2 className="w-5 h-5 text-white" />
                     </div>
-                    <span className="text-lg">Where is your business located?</span>
+                    <span className="text-lg brand-subheading">Where is your business located?</span>
                   </div>
                 </label>
                 <select 
-                  className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 focus:ring-4 focus:ring-blue-100 focus:border-blue-500 bg-white text-gray-700 transition-all duration-200 hover:border-gray-300"
+                  className="w-full border-2 border-soft-slate rounded-xl px-5 py-4 focus:ring-4 focus:ring-lean-blue focus:ring-opacity-20 focus:border-lean-blue bg-white text-midnight-core lsg-transition hover:border-lean-blue"
                   value={state} 
                   onChange={e => setState(e.target.value)}
                 >
@@ -279,17 +278,17 @@ export default function LSGCalculator() {
               </div>
 
               {/* Role Category */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
+                <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                      <Briefcase className="w-5 h-5 text-purple-600" />
+                    <div className="w-10 h-10 bg-momentum-blue rounded-lg flex items-center justify-center">
+                      <Briefcase className="w-5 h-5 text-white" />
                     </div>
-                    <span className="text-lg">What type of work do you need done?</span>
+                    <span className="text-lg brand-subheading">What type of work do you need done?</span>
                   </div>
                 </label>
                 <select 
-                  className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 focus:ring-4 focus:ring-purple-100 focus:border-purple-500 bg-white text-gray-700 transition-all duration-200 hover:border-gray-300"
+                  className="w-full border-2 border-soft-slate rounded-xl px-5 py-4 focus:ring-4 focus:ring-momentum-blue focus:ring-opacity-20 focus:border-momentum-blue bg-white text-midnight-core lsg-transition hover:border-momentum-blue"
                   value={selectedRoleCategory} 
                   onChange={e => setSelectedRoleCategory(e.target.value)}
                 >
@@ -307,25 +306,25 @@ export default function LSGCalculator() {
                   )}
                 </select>
                 {selectedRole && (
-                  <p className="text-sm text-gray-500 mt-3 px-4 py-2 bg-gray-50 rounded-lg">{selectedRole.description}</p>
+                  <p className="text-sm text-trust-navy mt-3 px-4 py-2 bg-soft-slate rounded-lg brand-body">{selectedRole.description}</p>
                 )}
 
               </div>
 
               {/* Base Salary */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
+                <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                      <DollarSign className="w-5 h-5 text-green-600" />
+                    <div className="w-10 h-10 bg-solar-orange rounded-lg flex items-center justify-center">
+                      <DollarSign className="w-5 h-5 text-white" />
                     </div>
-                    <span className="text-lg">What's your typical monthly salary for this role?</span>
+                    <span className="text-lg brand-subheading">What's your typical monthly salary for this role?</span>
                   </div>
                 </label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg font-medium">$</span>
+                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-trust-navy text-lg font-medium">$</span>
                   <input 
-                    className="w-full border-2 border-gray-200 rounded-xl pl-12 pr-5 py-4 focus:ring-4 focus:ring-green-100 focus:border-green-500 bg-white text-gray-700 transition-all duration-200 hover:border-gray-300" 
+                    className="w-full border-2 border-soft-slate rounded-xl pl-12 pr-5 py-4 focus:ring-4 focus:ring-solar-orange focus:ring-opacity-20 focus:border-solar-orange bg-white text-midnight-core lsg-transition hover:border-solar-orange" 
                     type="number" 
                     min={0} 
                     placeholder="Enter the base monthly salary per employee (before taxes and benefits)."
@@ -336,17 +335,17 @@ export default function LSGCalculator() {
               </div>
 
               {/* FTE Count */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
+                <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                      <Users className="w-5 h-5 text-orange-600" />
+                    <div className="w-10 h-10 bg-trust-navy rounded-lg flex items-center justify-center">
+                      <Users className="w-5 h-5 text-white" />
                     </div>
-                    <span className="text-lg">How many employees do you need?</span>
+                    <span className="text-lg brand-subheading">How many employees do you need?</span>
                   </div>
                 </label>
                 <input 
-                  className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 focus:ring-4 focus:ring-orange-100 focus:border-orange-500 bg-white text-gray-700 transition-all duration-200 hover:border-gray-300 text-center" 
+                  className="w-full border-2 border-soft-slate rounded-xl px-5 py-4 focus:ring-4 focus:ring-trust-navy focus:ring-opacity-20 focus:border-trust-navy bg-white text-midnight-core lsg-transition hover:border-trust-navy text-center" 
                   type="number" 
                   min={1} 
                   placeholder="Enter the number of full-time employees (FTEs) for this role."
@@ -362,97 +361,97 @@ export default function LSGCalculator() {
           {/* Right Section: Enhanced Calculation Results */}
           <div className="space-y-8">
             {/* Section Header */}
-            <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full mb-4">
+            <div className="text-center lg:text-left lsg-reveal">
+              <div className="inline-flex items-center gap-2 bg-lean-blue text-white px-4 py-2 rounded-full mb-4">
                 <TrendingUp className="w-4 h-4" />
                 <span className="text-sm font-semibold">Key Calculation Results</span>
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">Your Cost Analysis</h2>
-              <p className="text-gray-600 text-lg">See exactly how much you can save with LSG</p>
+              <h2 className="text-3xl font-bold text-midnight-core mb-3 brand-heading">Your Cost Analysis</h2>
+              <p className="text-trust-navy text-lg brand-body">See exactly how much you can save with LSG</p>
             </div>
 
             <div className="space-y-6">
               {/* Total Employer Load */}
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-2xl p-8 shadow-sm">
+              <div className="bg-lean-blue border border-lean-blue rounded-2xl p-8 shadow-sm lsg-reveal">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-blue-900">
+                  <h3 className="text-lg font-semibold text-white">
                     Total Employer Load (% of Wage)
                   </h3>
-                  <div className="w-12 h-12 bg-blue-200 rounded-xl flex items-center justify-center">
-                    <Calculator className="w-6 h-6 text-blue-700" />
+                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
+                    <Calculator className="w-6 h-6 text-white" />
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-blue-800 mb-2">
+                <div className="text-4xl font-bold text-white mb-2">
                   {results ? pct(results.totalEmployerLoadPct) : "—"}
                 </div>
-                <p className="text-blue-700 font-medium">Calculation includes: payroll taxes, employee benefits, administrative overhead, IT infrastructure, workforce management, and the monthly cost of your selected role</p>
+                <p className="text-white font-medium brand-body">Calculation includes: payroll taxes, employee benefits, administrative overhead, IT infrastructure, workforce management, and the monthly cost of your selected role</p>
               </div>
 
               {/* Monthly Employer Extras per FTE */}
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-2xl p-8 shadow-sm">
+              <div className="bg-momentum-blue border border-momentum-blue rounded-2xl p-8 shadow-sm lsg-reveal">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-purple-900">
+                  <h3 className="text-lg font-semibold text-white">
                     Monthly Employer Extras per FTE
                   </h3>
-                  <div className="w-12 h-12 bg-purple-200 rounded-xl flex items-center justify-center">
-                    <DollarSign className="w-6 h-6 text-purple-700" />
+                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
+                    <DollarSign className="w-6 h-6 text-white" />
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-purple-800 mb-2">
+                <div className="text-4xl font-bold text-white mb-2">
                   {results ? money(perFteExtras) : "—"}
                 </div>
-                <p className="text-purple-700 font-medium">Monthly employer extras per full-time employee</p>
+                <p className="text-white font-medium brand-body">Monthly employer extras per full-time employee</p>
               </div>
 
               {/* Monthly In-House Total Cost for All FTEs */}
-              <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 border border-indigo-200 rounded-2xl p-8 shadow-sm">
+              <div className="bg-trust-navy border border-trust-navy rounded-2xl p-8 shadow-sm lsg-reveal">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-indigo-900">
+                  <h3 className="text-lg font-semibold text-white">
                     Monthly In-House Total Cost for All FTEs
                   </h3>
-                  <div className="w-12 h-12 bg-indigo-200 rounded-xl flex items-center justify-center">
-                    <Users className="w-6 h-6 text-indigo-700" />
+                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
+                    <Users className="w-6 h-6 text-white" />
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-indigo-800 mb-2">
+                <div className="text-4xl font-bold text-white mb-2">
                   {results ? money(results.inHouseMonthlyAllFTEs) : "—"}
                 </div>
-                <p className="text-indigo-700 font-medium">Monthly base salary + employer extras for all FTEs</p>
+                <p className="text-white font-medium brand-body">Monthly base salary + employer extras for all FTEs</p>
               </div>
 
 
 
               {/* Gated Savings with LSG */}
-              <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-2xl p-8 shadow-sm">
+              <div className="bg-aqua-breeze border border-aqua-breeze rounded-2xl p-8 shadow-sm lsg-reveal">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-green-900">
+                  <h3 className="text-lg font-semibold text-trust-navy">
                     Projected LSG Savings
                   </h3>
-                  <div className="w-12 h-12 bg-green-200 rounded-xl flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-green-700" />
+                  <div className="w-12 h-12 bg-lean-blue rounded-xl flex items-center justify-center">
+                    <TrendingUp className="w-6 h-6 text-white" />
                   </div>
                 </div>
                 
                 {!showSavings ? (
                   <div className="text-center py-6">
-                    <div className="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Lock className="w-8 h-8 text-green-700" />
+                    <div className="w-16 h-16 bg-lean-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Lock className="w-8 h-8 text-white" />
                     </div>
-                    <h4 className="text-xl font-semibold text-green-800 mb-2">Unlock Your Savings</h4>
-                    <p className="text-green-700 mb-4">Get your personalized savings percentage by providing your company details</p>
+                    <h4 className="text-xl font-semibold text-trust-navy mb-2">Unlock Your Savings</h4>
+                    <p className="text-trust-navy mb-4 brand-body">Get your personalized savings percentage by providing your company details</p>
                     <button
                       onClick={handleUnlockSavings}
-                      className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                      className="bg-lean-blue text-white px-6 py-3 rounded-xl font-semibold hover:bg-momentum-blue lsg-transition lsg-hover-lift shadow-lg hover:shadow-xl"
                     >
                       Unlock Savings
                     </button>
                   </div>
                 ) : (
                   <div>
-                    <div className="text-4xl font-bold text-green-800 mb-2">
+                    <div className="text-4xl font-bold text-trust-navy mb-2">
                       {savingsPercentage > 0 ? pct(savingsPercentage) : "—"}
                     </div>
-                    <p className="text-green-700 font-medium">Expected savings vs in-house operations</p>
+                    <p className="text-trust-navy font-medium brand-body">Expected savings vs in-house operations</p>
                   </div>
                 )}
               </div>
@@ -463,15 +462,15 @@ export default function LSGCalculator() {
         {/* Lead Generation Modal */}
         {showLeadForm && !leadSubmitted && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl">
+            <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl lsg-scale-in">
               <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-lean-blue rounded-full flex items-center justify-center mx-auto mb-4">
                   <Mail className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Get Your Savings Report</h3>
-                <p className="text-gray-600">Enter your details to see exactly how much you can save with LSG</p>
-                <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                  <p className="text-sm text-blue-700">
+                <h3 className="text-2xl font-bold text-midnight-core mb-2 brand-heading">Get Your Savings Report</h3>
+                <p className="text-trust-navy brand-body">Enter your details to see exactly how much you can save with LSG</p>
+                <div className="mt-3 p-3 bg-aqua-breeze border border-aqua-breeze rounded-lg">
+                  <p className="text-sm text-trust-navy">
                     <strong>Note:</strong> Please use your work email address for business inquiries
                   </p>
                 </div>
@@ -479,9 +478,9 @@ export default function LSGCalculator() {
 
               <form onSubmit={handleLeadSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-midnight-core mb-2">
                     <div className="flex items-center gap-2">
-                      <Building className="w-4 h-4 text-gray-500" />
+                      <Building className="w-4 h-4 text-trust-navy" />
                       Company Name
                     </div>
                   </label>
@@ -490,15 +489,15 @@ export default function LSGCalculator() {
                     required
                     value={leadData.companyName}
                     onChange={(e) => setLeadData(prev => ({ ...prev, companyName: e.target.value }))}
-                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:ring-4 focus:ring-green-100 focus:border-green-500 transition-all duration-200"
+                    className="w-full border-2 border-soft-slate rounded-xl px-4 py-3 focus:ring-4 focus:ring-lean-blue focus:ring-opacity-20 focus:border-lean-blue lsg-transition"
                     placeholder="Enter your company name"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-midnight-core mb-2">
                     <div className="flex items-center gap-2">
-                      <Mail className="w-4 h-4 text-gray-500" />
+                      <Mail className="w-4 h-4 text-trust-navy" />
                       Business Email
                     </div>
                   </label>
@@ -510,8 +509,8 @@ export default function LSGCalculator() {
                       setLeadData(prev => ({ ...prev, email: e.target.value }));
                       if (emailError) setEmailError(""); // Clear error when user types
                     }}
-                    className={`w-full border-2 rounded-xl px-4 py-3 focus:ring-4 focus:ring-green-100 focus:border-green-500 transition-all duration-200 ${
-                      emailError ? 'border-red-300 focus:ring-red-100 focus:border-red-500' : 'border-gray-200'
+                    className={`w-full border-2 rounded-xl px-4 py-3 focus:ring-4 focus:ring-lean-blue focus:ring-opacity-20 focus:border-lean-blue lsg-transition ${
+                      emailError ? 'border-red-300 focus:ring-red-100 focus:border-red-500' : 'border-soft-slate'
                     }`}
                     placeholder="Enter your work email (e.g., you@company.com)"
                   />
@@ -527,14 +526,14 @@ export default function LSGCalculator() {
                   <button
                     type="button"
                     onClick={() => setShowLeadForm(false)}
-                    className="flex-1 px-4 py-3 text-gray-600 border-2 border-gray-300 rounded-xl hover:border-gray-400 transition-colors font-medium"
+                    className="flex-1 px-4 py-3 text-trust-navy border-2 border-soft-slate rounded-xl hover:border-lean-blue lsg-transition font-medium"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={isSubmitting || !leadData.companyName.trim() || !leadData.email.trim() || !!emailError}
-                    className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 bg-lean-blue text-white px-4 py-3 rounded-xl font-semibold hover:bg-momentum-blue lsg-transition disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Submitting...' : 'Get My Savings'}
                   </button>
@@ -542,7 +541,7 @@ export default function LSGCalculator() {
               </form>
 
               <div className="mt-6 text-center">
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-trust-navy">
                   By submitting this form, you agree to receive communications from LSG about our services.
                 </p>
               </div>
@@ -553,21 +552,21 @@ export default function LSGCalculator() {
         {/* Success Message Modal */}
         {leadSubmitted && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl">
+            <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl lsg-scale-in">
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-lean-blue rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Check Your Email! 📧</h3>
-                <p className="text-gray-600 mb-6">
+                <h3 className="text-2xl font-bold text-midnight-core mb-4 brand-heading">Check Your Email! 📧</h3>
+                <p className="text-trust-navy mb-6 brand-body">
                   Your personalized LSG cost analysis has been sent to <strong>{leadData.email}</strong>. 
                   The email includes your complete calculation results and cost breakdown.
                 </p>
-                <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6">
-                  <p className="text-sm text-green-800">
+                <div className="bg-aqua-breeze border border-aqua-breeze rounded-xl p-4 mb-6">
+                  <p className="text-sm text-trust-navy">
                     <strong>What's in your email:</strong>
                   </p>
-                  <ul className="text-sm text-green-700 mt-2 space-y-1">
+                  <ul className="text-sm text-trust-navy mt-2 space-y-1">
                     <li>• Your projected savings percentage</li>
                     <li>• Detailed cost breakdown</li>
                     <li>• Business profile summary</li>
@@ -580,7 +579,7 @@ export default function LSGCalculator() {
                     setShowLeadForm(false);
                     setShowSavings(true);
                   }}
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-200"
+                  className="w-full bg-lean-blue text-white px-6 py-3 rounded-xl font-semibold hover:bg-momentum-blue lsg-transition"
                 >
                   Got It!
                 </button>
