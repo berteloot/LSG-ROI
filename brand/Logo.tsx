@@ -54,8 +54,8 @@ const Logo: React.FC<LogoProps> = ({
       <Image
         src="/LSG_Logo_Horizontal_RGB_Lean Blue.png"
         alt="Lean Solutions Group Logo"
-        width={size * 3}
-        height={size}
+        width={180}
+        height={20}
         className="lsg-transition"
         style={{ filter: color !== 'var(--c-lean-blue)' ? 'hue-rotate(180deg) saturate(1.2)' : 'none' }}
       />

@@ -369,6 +369,9 @@ export default function LSGCalculator() {
               <h2 className="text-3xl font-bold text-midnight-core mb-3 brand-heading">Your Cost Analysis</h2>
               <p className="text-trust-navy text-lg brand-body">See exactly how much you can save with LSG</p>
             </div>
+            
+            {/* Spacer to align with Quick Start Guide */}
+            <div className="h-6"></div>
 
             <div className="space-y-6">
               {/* Total Employer Load */}
