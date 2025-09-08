@@ -374,7 +374,7 @@ export default function LSGCalculator() {
             </div>
             
             {/* Spacer to align with Quick Start Guide */}
-            <div className="h-12"></div>
+            <div className="h-4"></div>
 
             <div className="space-y-6">
               {/* Total Employer Load */}
