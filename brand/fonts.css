@@ -1,0 +1,142 @@
+/* FormaDJR Font Definitions */
+@font-face {
+  font-family: 'FormaDJR';
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  font-display: swap;
+}
+
+/* Fallback to Inter if FormaDJR is not available */
+@font-face {
+  font-family: 'FormaDJR';
+  src: local('Inter'), local('system-ui'), local('-apple-system'), local('Segoe UI'), local('Roboto'), local('Helvetica'), local('Arial');
+  font-display: swap;
+}
+
+/* Typography scale */
+.text-xs { font-size: 0.75rem; line-height: 1rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-base { font-size: 1rem; line-height: 1.5rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+.text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+.text-5xl { font-size: 3rem; line-height: 1; }
+.text-6xl { font-size: 3.75rem; line-height: 1; }
+
+/* Font weights */
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+/* Line heights */
+.leading-tight { line-height: 1.25; }
+.leading-snug { line-height: 1.375; }
+.leading-normal { line-height: 1.5; }
+.leading-relaxed { line-height: 1.625; }
+.leading-loose { line-height: 2; }
+
+/* Letter spacing */
+.tracking-tighter { letter-spacing: -0.05em; }
+.tracking-tight { letter-spacing: -0.025em; }
+.tracking-normal { letter-spacing: 0em; }
+.tracking-wide { letter-spacing: 0.025em; }
+.tracking-wider { letter-spacing: 0.05em; }
+.tracking-widest { letter-spacing: 0.1em; }
+
+/* Text utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.normal-case { text-transform: none; }
+
+.underline { text-decoration: underline; }
+.line-through { text-decoration: line-through; }
+.no-underline { text-decoration: none; }
+
+/* Headings with LSG styling */
+h1, .h1 {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: var(--c-midnight-core);
+  letter-spacing: -0.025em;
+}
+
+h2, .h2 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  color: var(--c-midnight-core);
+  letter-spacing: -0.025em;
+}
+
+h3, .h3 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: var(--c-midnight-core);
+}
+
+h4, .h4 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  color: var(--c-midnight-core);
+}
+
+h5, .h5 {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  color: var(--c-midnight-core);
+}
+
+h6, .h6 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: var(--c-midnight-core);
+}
+
+/* Body text */
+p, .body-text {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--c-midnight-core);
+}
+
+.small-text {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--c-trust-navy);
+}
+
+/* Brand-specific text styles */
+.brand-heading {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  color: var(--c-lean-blue);
+  letter-spacing: -0.025em;
+}
+
+.brand-subheading {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--c-trust-navy);
+}
+
+.brand-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--c-midnight-core);
+  line-height: 1.6;
+}
