@@ -232,16 +232,13 @@ export default function LSGCalculator() {
           {/* Left Section: Company Information */}
           <div className="space-y-8">
             {/* Section Header */}
-            <div className="text-center lg:text-left lsg-reveal">
+            <div className="text-center lg:text-left lsg-reveal min-h-[150px] flex flex-col justify-end">
               <h2 className="text-3xl font-bold text-midnight-core mb-3 flex items-center justify-center lg:justify-start gap-3">
                 <Target className="w-8 h-8 text-lean-blue" />
                 Company Information
               </h2>
               <p className="text-trust-navy text-lg brand-body">Tell us about your business to get accurate cost comparisons</p>
             </div>
-            
-            {/* Spacer to align with Total Employer Load */}
-            <div className="h-12"></div>
             
             {/* Quick Start Guide */}
             <div className="bg-aqua-breeze border border-aqua-breeze rounded-2xl p-6 shadow-sm lsg-reveal">
@@ -364,7 +361,7 @@ export default function LSGCalculator() {
           {/* Right Section: Enhanced Calculation Results */}
           <div className="space-y-8">
             {/* Section Header */}
-            <div className="text-center lg:text-left lsg-reveal">
+            <div className="text-center lg:text-left lsg-reveal min-h-[150px] flex flex-col justify-end">
               <div className="inline-flex items-center gap-2 bg-lean-blue text-white px-4 py-2 rounded-full mb-4">
                 <TrendingUp className="w-4 h-4" />
                 <span className="text-sm font-semibold">Key Calculation Results</span>
@@ -372,9 +369,6 @@ export default function LSGCalculator() {
               <h2 className="text-3xl font-bold text-midnight-core mb-3 brand-heading">Your Cost Analysis</h2>
               <p className="text-trust-navy text-lg brand-body">See exactly how much you can save with LSG</p>
             </div>
-            
-            {/* Spacer to align with Quick Start Guide */}
-            <div className="h-4"></div>
 
             <div className="space-y-6">
               {/* Total Employer Load */}
