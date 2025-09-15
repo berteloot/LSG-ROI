@@ -264,7 +264,7 @@ export default function LSGCalculator() {
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
                 <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <Icon name="office-building" className="w-10 h-10" size={40} />
+                    <Icon name="office-building" className="w-12 h-12" size={48} />
                     <span className="text-lg brand-subheading">Where is your business located?</span>
                   </div>
                 </label>
@@ -282,7 +282,7 @@ export default function LSGCalculator() {
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
                 <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <Icon name="recruitment" className="w-10 h-10" size={40} />
+                    <Icon name="recruitment" className="w-12 h-12" size={48} />
                     <span className="text-lg brand-subheading">What type of work do you need done?</span>
                   </div>
                 </label>
@@ -314,7 +314,7 @@ export default function LSGCalculator() {
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
                 <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <Icon name="financial-services" className="w-10 h-10" size={40} />
+                    <Icon name="financial-services" className="w-12 h-12" size={48} />
                     <span className="text-lg brand-subheading">What's your typical monthly salary for this role?</span>
                   </div>
                 </label>
@@ -335,7 +335,7 @@ export default function LSGCalculator() {
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
                 <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <Icon name="people" className="w-10 h-10" size={40} />
+                    <Icon name="people" className="w-12 h-12" size={48} />
                     <span className="text-lg brand-subheading">How many employees do you need?</span>
                   </div>
                 </label>
@@ -385,7 +385,7 @@ export default function LSGCalculator() {
                     Monthly Cost Above Base Wage
                   </h3>
                   <div className="w-12 h-12 bg-lavender-mist-night rounded-xl flex items-center justify-center">
-                    <Icon name="financial-services-alt" className="w-6 h-6" size={24} />
+                    <Icon name="financial-services-alt" className="w-12 h-12" size={48} />
                   </div>
                 </div>
                 <div className="text-4xl font-bold text-midnight-core mb-2">
@@ -401,7 +401,7 @@ export default function LSGCalculator() {
                     Monthly In-House Total Cost for All FTEs
                   </h3>
                   <div className="w-12 h-12 bg-solar-orange-night rounded-xl flex items-center justify-center">
-                    <Icon name="skyline" className="w-6 h-6" size={24} />
+                    <Icon name="skyline" className="w-12 h-12" size={48} />
                   </div>
                 </div>
                 <div className="text-4xl font-bold text-white mb-2">
@@ -419,7 +419,7 @@ export default function LSGCalculator() {
                     Projected LSG Savings
                   </h3>
                   <div className="w-12 h-12 bg-aqua-breeze-night rounded-xl flex items-center justify-center">
-                    <Icon name="bullseye-night" className="w-6 h-6" size={24} />
+                    <Icon name="bullseye-night" className="w-12 h-12" size={48} />
                   </div>
                 </div>
                 
