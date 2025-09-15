@@ -33,21 +33,21 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
         {/* Total Revenue */}
         <div className="bg-gray-50 p-6 rounded-xl text-center border border-gray-200">
           <div className="text-sm font-medium text-gray-600 mb-2">Total Revenue</div>
-          <div className="text-2xl font-bold text-gray-800">{formatCurrency(total_revenue)}</div>
+          <div className="text-2xl font-bold text-midnight-core">{formatCurrency(total_revenue)}</div>
           <TrendingUp className="w-6 h-6 mx-auto mt-2 text-gray-400" />
         </div>
 
         {/* Total Expenses */}
         <div className="bg-gray-50 p-6 rounded-xl text-center border border-gray-200">
           <div className="text-sm font-medium text-gray-600 mb-2">Total Expenses</div>
-          <div className="text-2xl font-bold text-gray-800">{formatCurrency(total_expenses)}</div>
+          <div className="text-2xl font-bold text-midnight-core">{formatCurrency(total_expenses)}</div>
           <DollarSign className="w-6 h-6 mx-auto mt-2 text-gray-400" />
         </div>
 
         {/* Payback Period */}
         <div className="bg-gray-50 p-6 rounded-xl text-center border border-gray-200">
           <div className="text-sm font-medium text-gray-600 mb-2">Payback Period</div>
-          <div className="text-2xl font-bold text-gray-800">
+          <div className="text-2xl font-bold text-midnight-core">
             {typeof payback_period === 'number' ? `${payback_period} years` : payback_period}
           </div>
           <Clock className="w-6 h-6 mx-auto mt-2 text-gray-400" />
@@ -84,7 +84,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 
       {/* Key Insights */}
       <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
-        <h3 className="font-semibold text-gray-800 mb-4">Key Insights</h3>
+        <h3 className="font-semibold text-midnight-core mb-4">Key Insights</h3>
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <div className={`w-3 h-3 rounded-full ${

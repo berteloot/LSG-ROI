@@ -3,7 +3,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { computeTotals, type Aggregates } from "@/lib/roi";
 import { type InclusionKey } from "@/lib/costMapping";
-import { Building2, Briefcase, DollarSign, Users, Lightbulb, TrendingUp, Calculator, Target, Lock, Mail, Building, CheckCircle } from "lucide-react";
+import { TrendingUp, Mail, Building, CheckCircle } from "lucide-react";
+import Icon from "./Icon";
 
 const STATES = [
   "District of Columbia", "Alabama","Alaska","Arizona","Arkansas","California","Colorado",
@@ -75,6 +76,7 @@ export default function LSGCalculator() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [leadSubmitted, setLeadSubmitted] = useState(false);
   const [showSavings, setShowSavings] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(false);
   const [emailError, setEmailError] = useState("");
 
   // Fetch role categories on component mount
@@ -208,6 +210,7 @@ export default function LSGCalculator() {
 
   const handleUnlockSavings = () => {
     setShowLeadForm(true);
+    setIsUnlocked(true);
   };
 
   return (
@@ -216,10 +219,10 @@ export default function LSGCalculator() {
 
         {/* Enhanced Header Section */}
         <div className="text-center mb-16 lsg-reveal">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-lean-blue rounded-2xl mb-6 lsg-emphasize">
-            <Calculator className="w-8 h-8 text-white" />
+          <div className="inline-flex items-center justify-center mb-6 lsg-emphasize">
+            <Icon name="calculator" className="w-16 h-16" size={64} />
           </div>
-          <h1 className="text-5xl font-bold text-midnight-core mb-6 brand-heading">
+          <h1 className="text-5xl text-lean-blue mb-6 brand-heading uppercase">
             LSG vs In-House Cost Calculator
           </h1>
           <p className="text-xl text-trust-navy max-w-4xl mx-auto leading-relaxed brand-body">
@@ -234,7 +237,7 @@ export default function LSGCalculator() {
             {/* Section Header */}
             <div className="text-center lg:text-left lsg-reveal min-h-[150px] flex flex-col justify-end">
               <h2 className="text-3xl font-bold text-midnight-core mb-3 flex items-center justify-center lg:justify-start gap-3">
-                <Target className="w-8 h-8 text-lean-blue" />
+                <Icon name="target" className="w-8 h-8" size={32} />
                 Company Information
               </h2>
               <p className="text-trust-navy text-lg brand-body">Tell us about your business to get accurate cost comparisons</p>
@@ -243,8 +246,8 @@ export default function LSGCalculator() {
             {/* Quick Start Guide */}
             <div className="bg-aqua-breeze border border-aqua-breeze rounded-2xl p-6 shadow-sm lsg-reveal">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-lean-blue rounded-xl flex items-center justify-center">
-                  <Lightbulb className="w-6 h-6 text-white" />
+                <div className="flex-shrink-0">
+                  <Icon name="lightbulb" className="w-12 h-12" size={48} />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-trust-navy mb-2">Quick Start Guide</h3>
@@ -261,9 +264,7 @@ export default function LSGCalculator() {
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
                 <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-lean-blue rounded-lg flex items-center justify-center">
-                      <Building2 className="w-5 h-5 text-white" />
-                    </div>
+                    <Icon name="office-building" className="w-10 h-10" size={40} />
                     <span className="text-lg brand-subheading">Where is your business located?</span>
                   </div>
                 </label>
@@ -281,9 +282,7 @@ export default function LSGCalculator() {
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
                 <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-momentum-blue rounded-lg flex items-center justify-center">
-                      <Briefcase className="w-5 h-5 text-white" />
-                    </div>
+                    <Icon name="recruitment" className="w-10 h-10" size={40} />
                     <span className="text-lg brand-subheading">What type of work do you need done?</span>
                   </div>
                 </label>
@@ -315,9 +314,7 @@ export default function LSGCalculator() {
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
                 <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-solar-orange rounded-lg flex items-center justify-center">
-                      <DollarSign className="w-5 h-5 text-white" />
-                    </div>
+                    <Icon name="financial-services" className="w-10 h-10" size={40} />
                     <span className="text-lg brand-subheading">What's your typical monthly salary for this role?</span>
                   </div>
                 </label>
@@ -338,9 +335,7 @@ export default function LSGCalculator() {
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-soft-slate lsg-reveal">
                 <label className="block text-sm font-semibold text-midnight-core mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-trust-navy rounded-lg flex items-center justify-center">
-                      <Users className="w-5 h-5 text-white" />
-                    </div>
+                    <Icon name="people" className="w-10 h-10" size={40} />
                     <span className="text-lg brand-subheading">How many employees do you need?</span>
                   </div>
                 </label>
@@ -362,10 +357,6 @@ export default function LSGCalculator() {
           <div className="space-y-8">
             {/* Section Header */}
             <div className="text-center lg:text-left lsg-reveal min-h-[150px] flex flex-col justify-end">
-              <div className="inline-flex items-center gap-2 bg-lean-blue text-white px-4 py-2 rounded-full mb-4">
-                <TrendingUp className="w-4 h-4" />
-                <span className="text-sm font-semibold">Key Calculation Results</span>
-              </div>
               <h2 className="text-3xl font-bold text-midnight-core mb-3 brand-heading">Your Cost Analysis</h2>
               <p className="text-trust-navy text-lg brand-body">See exactly how much you can save with LSG</p>
             </div>
@@ -377,8 +368,8 @@ export default function LSGCalculator() {
                   <h3 className="text-lg font-semibold text-white">
                     Total Employer Load (% of Wage)
                   </h3>
-                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
-                    <Calculator className="w-6 h-6 text-white" />
+                  <div>
+                    <Icon name="calculator" className="w-12 h-12" size={48} />
                   </div>
                 </div>
                 <div className="text-4xl font-bold text-white mb-2">
@@ -388,29 +379,29 @@ export default function LSGCalculator() {
               </div>
 
               {/* Monthly Employer Extras per FTE */}
-              <div className="bg-momentum-blue border border-momentum-blue rounded-2xl p-8 shadow-sm lsg-reveal">
+              <div className="bg-lavender-mist border border-lavender-mist rounded-2xl p-8 shadow-sm lsg-reveal">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-white">
-                    Monthly Employer Extras per FTE
+                  <h3 className="text-lg font-semibold text-midnight-core">
+                    Monthly Cost Above Base Wage
                   </h3>
-                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
-                    <DollarSign className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-lavender-mist-night rounded-xl flex items-center justify-center">
+                    <Icon name="financial-services-alt" className="w-6 h-6" size={24} />
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-white mb-2">
+                <div className="text-4xl font-bold text-midnight-core mb-2">
                   {results ? money(perFteExtras) : "—"}
                 </div>
-                <p className="text-white font-medium brand-body">Monthly employer extras per full-time employee</p>
+                <p className="text-midnight-core font-medium brand-body">Additional employer costs per full-time employee (taxes, benefits, admin)</p>
               </div>
 
               {/* Monthly In-House Total Cost for All FTEs */}
-              <div className="bg-trust-navy border border-trust-navy rounded-2xl p-8 shadow-sm lsg-reveal">
+              <div className="bg-solar-orange border border-solar-orange rounded-2xl p-8 shadow-sm lsg-reveal">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-white">
                     Monthly In-House Total Cost for All FTEs
                   </h3>
-                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
-                    <Users className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-solar-orange-night rounded-xl flex items-center justify-center">
+                    <Icon name="skyline" className="w-6 h-6" size={24} />
                   </div>
                 </div>
                 <div className="text-4xl font-bold text-white mb-2">
@@ -424,34 +415,35 @@ export default function LSGCalculator() {
               {/* Gated Savings with LSG */}
               <div className="bg-aqua-breeze border border-aqua-breeze rounded-2xl p-8 shadow-sm lsg-reveal">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-trust-navy">
+                  <h3 className="text-lg font-semibold text-midnight-core">
                     Projected LSG Savings
                   </h3>
-                  <div className="w-12 h-12 bg-lean-blue rounded-xl flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-aqua-breeze-night rounded-xl flex items-center justify-center">
+                    <Icon name="bullseye-night" className="w-6 h-6" size={24} />
                   </div>
                 </div>
                 
                 {!showSavings ? (
                   <div className="text-center py-6">
-                    <div className="w-16 h-16 bg-lean-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Lock className="w-8 h-8 text-white" />
+                    <div className="flex items-center justify-center mx-auto mb-4">
+                      <Icon name="unlock" className="w-16 h-16" size={64} />
                     </div>
-                    <h4 className="text-xl font-semibold text-trust-navy mb-2">Unlock Your Savings</h4>
-                    <p className="text-trust-navy mb-4 brand-body">Get your personalized savings percentage by providing your company details</p>
+                    <h4 className="text-xl font-semibold text-midnight-core mb-2">Unlock Your Savings</h4>
+                    <p className="text-midnight-core mb-4 brand-body">Get your personalized savings percentage by providing your company details</p>
                     <button
                       onClick={handleUnlockSavings}
-                      className="bg-lean-blue text-white px-6 py-3 rounded-xl font-semibold hover:bg-momentum-blue lsg-transition lsg-hover-lift shadow-lg hover:shadow-xl"
+                      className="text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 lsg-transition lsg-hover-lift shadow-lg hover:shadow-xl"
+                      style={{ backgroundColor: '#006EF2' }}
                     >
                       Unlock Savings
                     </button>
                   </div>
                 ) : (
                   <div>
-                    <div className="text-4xl font-bold text-trust-navy mb-2">
+                    <div className="text-4xl font-bold text-midnight-core mb-2">
                       {savingsPercentage > 0 ? pct(savingsPercentage) : "—"}
                     </div>
-                    <p className="text-trust-navy font-medium brand-body">Expected savings vs in-house operations</p>
+                    <p className="text-midnight-core font-medium brand-body">Expected savings vs in-house operations</p>
                   </div>
                 )}
               </div>
@@ -465,9 +457,9 @@ export default function LSGCalculator() {
             <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl lsg-scale-in">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-lean-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Mail className="w-8 h-8 text-white" />
+                  <Icon name="email" className="w-8 h-8" size={32} />
                 </div>
-                <h3 className="text-2xl font-bold text-midnight-core mb-2 brand-heading">Get Your Savings Report</h3>
+                <h3 className="text-2xl font-bold text-lean-blue mb-2 brand-heading uppercase">GET YOUR SAVINGS REPORT</h3>
                 <p className="text-trust-navy brand-body">Enter your details to see exactly how much you can save with LSG</p>
                 <div className="mt-3 p-3 bg-aqua-breeze border border-aqua-breeze rounded-lg">
                   <p className="text-sm text-trust-navy">

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 
@@ -7,8 +6,6 @@ import Navigation from '@/components/Navigation'
 import '@/brand/theme.css'
 import '@/brand/fonts.css'
 import '@/brand/motion.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'ROI Calculator - Lean Solutions Group',
@@ -22,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="font-forma">
         <Navigation />
         <div className="min-h-screen bg-paper-offwhite">
           {children}

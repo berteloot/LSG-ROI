@@ -1,11 +1,29 @@
 /* FormaDJR Font Definitions */
 @font-face {
   font-family: 'FormaDJR';
-  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  src: url('/Forma DJR/FormaDJRCyrillicText-Regular-Testing.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
   font-display: swap;
 }
 
-/* Fallback to Inter if FormaDJR is not available */
+@font-face {
+  font-family: 'FormaDJR';
+  src: url('/Forma DJR/FormaDJRCyrillicText-Bold-Testing.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FormaDJR';
+  src: url('/Forma DJR/FormaDJRCyrillicVariable-VF-Testing.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback fonts */
 @font-face {
   font-family: 'FormaDJR';
   src: local('Inter'), local('system-ui'), local('-apple-system'), local('Segoe UI'), local('Roboto'), local('Helvetica'), local('Arial');
@@ -64,6 +82,7 @@
 
 /* Headings with LSG styling */
 h1, .h1 {
+  font-family: 'FormaDJR', 'Inter', system-ui, sans-serif;
   font-size: 2.25rem;
   line-height: 2.5rem;
   font-weight: 700;
@@ -72,6 +91,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
+  font-family: 'FormaDJR', 'Inter', system-ui, sans-serif;
   font-size: 1.875rem;
   line-height: 2.25rem;
   font-weight: 600;
@@ -80,6 +100,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
+  font-family: 'FormaDJR', 'Inter', system-ui, sans-serif;
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 600;
@@ -87,6 +108,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
+  font-family: 'FormaDJR', 'Inter', system-ui, sans-serif;
   font-size: 1.25rem;
   line-height: 1.75rem;
   font-weight: 500;
@@ -94,6 +116,7 @@ h4, .h4 {
 }
 
 h5, .h5 {
+  font-family: 'FormaDJR', 'Inter', system-ui, sans-serif;
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 500;
@@ -101,6 +124,7 @@ h5, .h5 {
 }
 
 h6, .h6 {
+  font-family: 'FormaDJR', 'Inter', system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 500;
@@ -109,12 +133,14 @@ h6, .h6 {
 
 /* Body text */
 p, .body-text {
+  font-family: 'FormaDJR', 'Inter', system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   color: var(--c-midnight-core);
 }
 
 .small-text {
+  font-family: 'FormaDJR', 'Inter', system-ui, sans-serif;
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: var(--c-trust-navy);
@@ -122,20 +148,20 @@ p, .body-text {
 
 /* Brand-specific text styles */
 .brand-heading {
-  font-family: var(--font-sans);
-  font-weight: 700;
+  font-family: 'FormaDJR', 'Inter', system-ui, sans-serif;
+  font-weight: 400;
   color: var(--c-lean-blue);
   letter-spacing: -0.025em;
 }
 
 .brand-subheading {
-  font-family: var(--font-sans);
+  font-family: 'FormaDJR', 'Inter', system-ui, sans-serif;
   font-weight: 500;
   color: var(--c-trust-navy);
 }
 
 .brand-body {
-  font-family: var(--font-sans);
+  font-family: 'FormaDJR', 'Inter', system-ui, sans-serif;
   font-weight: 400;
   color: var(--c-midnight-core);
   line-height: 1.6;

@@ -1,5 +1,6 @@
 import CostCalculator from '@/components/CostCalculator'
-import { TrendingUp, Calculator, MapPin } from 'lucide-react'
+import { TrendingUp, MapPin } from 'lucide-react'
+import Icon from '@/components/Icon'
 
 export default function CostsPage() {
   return (
@@ -7,7 +8,7 @@ export default function CostsPage() {
       {/* Header */}
       <header className="text-center text-white mb-12">
         <h1 className="text-5xl font-bold mb-4 flex items-center justify-center gap-3">
-          <Calculator className="w-12 h-12" />
+          <Icon name="calculator" className="w-12 h-12" size={48} />
           Cost Calculator
         </h1>
         <p className="text-xl opacity-90">

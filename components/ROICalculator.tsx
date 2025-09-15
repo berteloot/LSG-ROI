@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Calculator, DollarSign, Calendar, TrendingUp, AlertCircle } from 'lucide-react'
+import { DollarSign, Calendar, TrendingUp, AlertCircle } from 'lucide-react'
+import Icon from './Icon'
 import { ROIData } from '@/lib/roi-calculations'
 
 interface ROICalculatorProps {
@@ -195,7 +196,7 @@ export default function ROICalculator({ onSubmit, isCalculating }: ROICalculator
         disabled={isCalculating}
         className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
-        <Calculator className="w-5 h-5" />
+        <Icon name="calculator" className="w-5 h-5" size={20} />
         {isCalculating ? 'Calculating...' : 'Calculate ROI'}
       </button>
     </form>

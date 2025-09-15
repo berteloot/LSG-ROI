@@ -562,7 +562,7 @@ export default function AdminPage() {
             <div className="mx-auto h-12 w-12 flex items-center justify-center rounded-full bg-blue-100">
               <Lock className="h-6 w-6 text-blue-600" />
             </div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-midnight-core">
               Admin Access Required
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
@@ -579,7 +579,7 @@ export default function AdminPage() {
                 name="password"
                 type="password"
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-midnight-core focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                 placeholder="Enter admin password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -658,7 +658,7 @@ export default function AdminPage() {
         <div className="mb-8">
           <div className="flex justify-between items-start">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
+              <h1 className="text-3xl font-bold text-midnight-core mb-2">Admin Dashboard</h1>
               <p className="text-gray-600">Manage state costs, users, and cost assessments</p>
             </div>
             <button
@@ -815,7 +815,7 @@ export default function AdminPage() {
             {/* CSV Upload Section */}
             <div className="bg-white rounded-lg shadow p-6 mb-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Bulk Update via CSV</h3>
+                <h3 className="text-lg font-semibold text-midnight-core">Bulk Update via CSV</h3>
               </div>
               
               <div className="space-y-4">
@@ -902,7 +902,7 @@ export default function AdminPage() {
                           {csvUpload.preview.map((row, index) => (
                             <tr key={index} className="hover:bg-gray-50">
                               {Object.keys(row).filter(key => !key.startsWith('_')).map(header => (
-                                <td key={header} className="px-4 py-2 text-sm text-gray-900">
+                                <td key={header} className="px-4 py-2 text-sm text-midnight-core">
                                   {row[header]}
                                 </td>
                               ))}
@@ -919,7 +919,7 @@ export default function AdminPage() {
             {/* State Costs Table */}
             <div className="bg-white rounded-lg shadow overflow-hidden">
               <div className="px-6 py-4 border-b border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900">
+                <h3 className="text-lg font-medium text-midnight-core">
                   State Cost Data ({filteredData.length} items)
                 </h3>
               </div>
@@ -944,7 +944,7 @@ export default function AdminPage() {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {filteredData.map((item) => (
                       <tr key={item.id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-midnight-core">
                           {item.isEditing ? (
                             <select
                               value={item.state}
@@ -962,7 +962,7 @@ export default function AdminPage() {
                             item.state
                           )}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-midnight-core">
                           {item.isEditing ? (
                             <select
                               value={item.category}
@@ -980,7 +980,7 @@ export default function AdminPage() {
                             item.category
                           )}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-midnight-core">
                           {item.isEditing ? (
                             <select
                               value={item.item}
@@ -996,7 +996,7 @@ export default function AdminPage() {
                             item.item
                           )}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-midnight-core">
                           {item.isEditing ? (
                             <input
                               type="number"
@@ -1015,7 +1015,7 @@ export default function AdminPage() {
                         </td>
                         {showOptionalColumns && (
                           <>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-midnight-core">
                               {item.isEditing ? (
                                 <input
                                   type="number"
@@ -1031,7 +1031,7 @@ export default function AdminPage() {
                                 item.employerCostUSD > 0 ? `$${item.employerCostUSD.toLocaleString()}` : '-'
                               )}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-midnight-core">
                               {item.isEditing ? (
                                 <input
                                   type="text"
@@ -1045,7 +1045,7 @@ export default function AdminPage() {
                                 item.notes || '-'
                               )}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-midnight-core">
                               {item.isEditing ? (
                                 <input
                                   type="text"
@@ -1072,7 +1072,7 @@ export default function AdminPage() {
                               </button>
                               <button
                                 onClick={() => handleCancel(item.id)}
-                                className="text-gray-600 hover:text-gray-900"
+                                className="text-gray-600 hover:text-midnight-core"
                               >
                                 <X className="w-4 h-4" />
                               </button>
@@ -1108,7 +1108,7 @@ export default function AdminPage() {
             <div className="px-6 py-4 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900">
+                  <h3 className="text-lg font-medium text-midnight-core">
                     Users ({users.length})
                   </h3>
                   <p className="text-sm text-gray-500 mt-1">
@@ -1153,10 +1153,10 @@ export default function AdminPage() {
                     ) : (
                       users.map((user) => (
                         <tr key={user.id} className="hover:bg-gray-50">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-midnight-core">
                             {user.companyName || 'N/A'}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-midnight-core">
                             {user.email || 'N/A'}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -1190,7 +1190,7 @@ export default function AdminPage() {
           <div className="bg-white rounded-lg shadow overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-medium text-gray-900">
+                <h3 className="text-lg font-medium text-midnight-core">
                   Cost Assessments ({costAssessments.length})
                 </h3>
                 <div className="flex space-x-2">
@@ -1247,25 +1247,25 @@ export default function AdminPage() {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {costAssessments.map((assessment) => (
                       <tr key={assessment.id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-midnight-core">
                           {assessment.companyName || 'N/A'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-midnight-core">
                           {assessment.email || 'N/A'}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {new Date(assessment.createdAt).toLocaleString()}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-midnight-core">
                           ${assessment.baseSalary?.toLocaleString() || 0}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-midnight-core">
                           {assessment.fteCount || 0}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-midnight-core">
                           ${assessment.totalEmployerLoad?.toLocaleString() || 0}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-midnight-core">
                           ${assessment.lsgCost?.toLocaleString() || 0}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -1291,7 +1291,7 @@ export default function AdminPage() {
           <div className="bg-white rounded-lg shadow overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-medium text-gray-900">
+                <h3 className="text-lg font-medium text-midnight-core">
                   Role Categories ({costCategories.length})
                 </h3>
                 <div className="flex space-x-2">
@@ -1348,7 +1348,7 @@ export default function AdminPage() {
                     ) : (
                       costCategories.map((category) => (
                         <tr key={category.id} className="hover:bg-gray-50">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-midnight-core">
                             {category.isEditing ? (
                               <input
                                 type="text"
@@ -1363,7 +1363,7 @@ export default function AdminPage() {
                               category.name
                             )}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-midnight-core">
                             {category.isEditing ? (
                               <input
                                 type="text"
@@ -1378,7 +1378,7 @@ export default function AdminPage() {
                               category.description || '-'
                             )}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-midnight-core">
                             {category.isEditing ? (
                               <input
                                 type="number"
@@ -1392,7 +1392,7 @@ export default function AdminPage() {
                                 placeholder="0.00"
                               />
                             ) : (
-                              <span className="text-gray-900">
+                              <span className="text-midnight-core">
                                 ${(category.monthlyCost || 0).toFixed(2)}
                               </span>
                             )}
@@ -1409,7 +1409,7 @@ export default function AdminPage() {
                                 </button>
                                 <button
                                   onClick={() => handleCategoryCancel(category.id)}
-                                  className="text-gray-600 hover:text-gray-900"
+                                  className="text-gray-600 hover:text-midnight-core"
                                   title="Cancel"
                                 >
                                   <X className="w-4 h-4" />

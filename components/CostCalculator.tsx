@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { TrendingUp, DollarSign, MapPin, Calculator } from 'lucide-react'
+import { TrendingUp, DollarSign, MapPin } from 'lucide-react'
+import Icon from './Icon'
 import { 
   InclusionKey, 
   categoriesFor, 
@@ -86,7 +87,7 @@ export default function CostCalculator() {
     <div className="space-y-6">
       {/* State Selection */}
       <div className="card">
-        <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+        <h3 className="text-xl font-semibold text-midnight-core mb-4 flex items-center gap-2">
           <MapPin className="w-5 h-5" />
           Select State
         </h3>
@@ -103,8 +104,8 @@ export default function CostCalculator() {
 
       {/* Cost Category Toggles */}
       <div className="card">
-        <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-          <Calculator className="w-5 h-5" />
+        <h3 className="text-xl font-semibold text-midnight-core mb-4 flex items-center gap-2">
+          <Icon name="calculator" className="w-5 h-5" size={20} />
           Cost Categories
         </h3>
         <p className="text-gray-600 mb-6">
@@ -123,7 +124,7 @@ export default function CostCalculator() {
                     onChange={() => toggleInclusionKey(key)}
                     className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                   />
-                  <label htmlFor={key} className="font-medium text-gray-900">
+                  <label htmlFor={key} className="font-medium text-midnight-core">
                     {getInclusionKeyDisplayName(key)}
                   </label>
                 </div>
@@ -144,8 +145,8 @@ export default function CostCalculator() {
       {/* Results */}
       {aggregates && (
         <div className="card">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-            <Calculator className="w-5 h-5" />
+          <h3 className="text-xl font-semibold text-midnight-core mb-4 flex items-center gap-2">
+            <Icon name="calculator" className="w-5 h-5" size={20} />
             Cost Summary
           </h3>
           
@@ -160,24 +161,24 @@ export default function CostCalculator() {
             {/* Selected Categories */}
             <div className="bg-gray-50 p-6 rounded-xl text-center border border-gray-200">
               <div className="text-sm font-medium text-gray-600 mb-2">Categories Selected</div>
-              <div className="text-2xl font-bold text-gray-800">{includedKeys.length}</div>
+              <div className="text-2xl font-bold text-midnight-core">{includedKeys.length}</div>
               <div className="text-sm text-gray-500">of {allKeys.length}</div>
             </div>
 
             {/* State */}
             <div className="bg-gray-50 p-6 rounded-xl text-center border border-gray-200">
               <div className="text-sm font-medium text-gray-600 mb-2">State</div>
-              <div className="text-2xl font-bold text-gray-800">{selectedState}</div>
+              <div className="text-2xl font-bold text-midnight-core">{selectedState}</div>
             </div>
           </div>
 
           {/* Breakdown by Category */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-gray-800">Breakdown by Category</h4>
+            <h4 className="font-semibold text-midnight-core">Breakdown by Category</h4>
             {includedKeys.map(key => (
               <div key={key} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                 <div>
-                  <div className="font-medium text-gray-900">
+                  <div className="font-medium text-midnight-core">
                     {getInclusionKeyDisplayName(key)}
                   </div>
                   <div className="text-sm text-gray-600">
@@ -185,7 +186,7 @@ export default function CostCalculator() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-xl font-bold text-gray-900">
+                  <div className="text-xl font-bold text-midnight-core">
                     {aggregates.aggregates[key]?.toFixed(2)}%
                   </div>
                   <div className="text-sm text-gray-500">

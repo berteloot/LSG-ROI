@@ -48,7 +48,7 @@ export default function HistorySection() {
     return (
       <div className="text-center py-12">
         <Inbox className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-        <h3 className="text-lg font-medium text-gray-900 mb-2">No calculations yet</h3>
+        <h3 className="text-lg font-medium text-midnight-core mb-2">No calculations yet</h3>
         <p className="text-gray-600 mb-6">Start by calculating your first ROI to see it here!</p>
       </div>
     )
@@ -65,7 +65,7 @@ export default function HistorySection() {
           >
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-gray-900 text-lg">{calc.project_name}</h3>
+              <h3 className="font-semibold text-midnight-core text-lg">{calc.project_name}</h3>
               <div className={`px-3 py-1 rounded-full text-sm font-medium ${
                 calc.calculated_roi >= 20 ? 'bg-green-100 text-green-800' :
                 calc.calculated_roi >= 10 ? 'bg-blue-100 text-blue-800' :
@@ -80,19 +80,19 @@ export default function HistorySection() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
               <div className="text-center">
                 <div className="text-xs text-gray-500 mb-1">Investment</div>
-                <div className="font-medium text-gray-900">{formatCurrency(calc.initial_investment)}</div>
+                <div className="font-medium text-midnight-core">{formatCurrency(calc.initial_investment)}</div>
               </div>
               <div className="text-center">
                 <div className="text-xs text-gray-500 mb-1">Revenue/Year</div>
-                <div className="font-medium text-gray-900">{formatCurrency(calc.annual_revenue)}</div>
+                <div className="font-medium text-midnight-core">{formatCurrency(calc.annual_revenue)}</div>
               </div>
               <div className="text-center">
                 <div className="text-xs text-gray-500 mb-1">Expenses/Year</div>
-                <div className="font-medium text-gray-900">{formatCurrency(calc.annual_expenses)}</div>
+                <div className="font-medium text-midnight-core">{formatCurrency(calc.annual_expenses)}</div>
               </div>
               <div className="text-center">
                 <div className="text-xs text-gray-500 mb-1">Duration</div>
-                <div className="font-medium text-gray-900">{calc.project_duration} years</div>
+                <div className="font-medium text-midnight-core">{calc.project_duration} years</div>
               </div>
             </div>
 
