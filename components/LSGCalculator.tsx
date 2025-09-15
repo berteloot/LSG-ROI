@@ -304,9 +304,6 @@ export default function LSGCalculator() {
                     ))
                   )}
                 </select>
-                {selectedRole && (
-                  <p className="text-sm text-trust-navy mt-3 px-4 py-2 bg-soft-slate rounded-lg brand-body">{selectedRole.description}</p>
-                )}
 
               </div>
 
