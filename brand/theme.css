@@ -1,4 +1,7 @@
 :root {
+  /* Color space declaration for consistent rendering */
+  color-scheme: light;
+  
   /* Primary blues */
   --c-lean-blue: #0099ff;
   --c-momentum-blue: #006ef2;
@@ -69,10 +72,26 @@ body {
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Color space declaration for dark mode */
+    color-scheme: dark;
+    
+    /* Override accent colors for dark mode */
     --c-lavender-mist: var(--c-lavender-mist-night);
-    --c-aqua-breeze: var(--c-aqua-breeze-night);
+    --c-aqua-breeze: #3a6a6a; /* Lighter aqua for better visibility in dark mode */
     --c-solar-orange: var(--c-solar-orange-night);
     --c-sandstone: var(--c-sandstone-night);
+    
+    /* Ensure consistent background and text colors */
+    --c-paper-offwhite: #1a1a1a;
+    --c-midnight-core: #ffffff;
+    --c-soft-slate: #2a2a2a;
+    --c-altitude-white: #333333;
+  }
+  
+  /* Override body styles for dark mode */
+  body {
+    background: var(--c-paper-offwhite);
+    color: var(--c-midnight-core);
   }
 }
 
