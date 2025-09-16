@@ -237,7 +237,7 @@ export default function LSGCalculator() {
             {/* Section Header */}
             <div className="text-center lg:text-left lsg-reveal min-h-[150px] flex flex-col justify-end">
               <h2 className="text-3xl font-bold text-[#001F38] mb-3 flex items-center justify-center lg:justify-start gap-3">
-                <Icon name="target" className="w-8 h-8" size={32} />
+                <img src="/Icons_ROI/lsg_icon_Target_BlueNavy_Round.svg" alt="target icon" className="w-8 h-8" width={32} height={32} />
                 Company Information
               </h2>
               <p className="text-[#002E66] text-lg brand-body">Tell us about your business to get accurate cost comparisons</p>
@@ -247,7 +247,7 @@ export default function LSGCalculator() {
             <div className="bg-[#ABE8E5] border border-[#ABE8E5] rounded-2xl p-6 shadow-sm lsg-reveal">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0">
-                  <Icon name="lightbulb" className="w-12 h-12" size={48} />
+                  <img src="/Icons_ROI/lsg_icon_Lightbulb_LeanBlue_Round.svg" alt="lightbulb icon" className="w-12 h-12" width={48} height={48} />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-[#002E66] mb-2">Quick Start Guide</h3>
@@ -264,7 +264,7 @@ export default function LSGCalculator() {
               <div className="bg-[#F5F5F7] rounded-2xl p-6 shadow-sm border border-[#E2E9EA] lsg-reveal">
                 <label className="block text-sm font-semibold text-[#002E66] mb-3">
                   <div className="flex items-center gap-3">
-                    <Icon name="office-building" className="w-12 h-12" size={48} />
+                    <img src="/Icons_ROI/lsg_icon_OfficeBuilding_BlueNavy_Round.svg" alt="office building icon" className="w-12 h-12" width={48} height={48} />
                     <span className="text-lg brand-subheading">Where is your business located?</span>
                   </div>
                 </label>
@@ -282,7 +282,7 @@ export default function LSGCalculator() {
               <div className="bg-[#F5F5F7] rounded-2xl p-6 shadow-sm border border-[#E2E9EA] lsg-reveal">
                 <label className="block text-sm font-semibold text-[#002E66] mb-3">
                   <div className="flex items-center gap-3">
-                    <Icon name="recruitment" className="w-12 h-12" size={48} />
+                    <img src="/SVG 2/lsg_icon_recruitment-02-blue.svg" alt="recruitment icon" className="w-12 h-12" width={48} height={48} />
                     <span className="text-lg brand-subheading">What type of work do you need done?</span>
                   </div>
                 </label>
@@ -311,7 +311,7 @@ export default function LSGCalculator() {
               <div className="bg-[#F5F5F7] rounded-2xl p-6 shadow-sm border border-[#E2E9EA] lsg-reveal">
                 <label className="block text-sm font-semibold text-[#002E66] mb-3">
                   <div className="flex items-center gap-3">
-                    <Icon name="financial-services" className="w-12 h-12" size={48} />
+                    <img src="/SVG 2/lsg_icon_financialservices02-02-blue.svg" alt="financial services icon" className="w-12 h-12" width={48} height={48} />
                     <span className="text-lg brand-subheading">What's your typical monthly salary for this role?</span>
                   </div>
                 </label>
@@ -332,7 +332,7 @@ export default function LSGCalculator() {
               <div className="bg-[#F5F5F7] rounded-2xl p-6 shadow-sm border border-[#E2E9EA] lsg-reveal">
                 <label className="block text-sm font-semibold text-[#002E66] mb-3">
                   <div className="flex items-center gap-3">
-                    <Icon name="people" className="w-12 h-12" size={48} />
+                    <img src="/SVG 2/lsg_icon_people-02-blue.svg" alt="people icon" className="w-12 h-12" width={48} height={48} />
                     <span className="text-lg brand-subheading">How many employees do you need?</span>
                   </div>
                 </label>
@@ -464,7 +464,7 @@ export default function LSGCalculator() {
             <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl lsg-scale-in">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-[#0099FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="email" className="w-8 h-8" size={32} />
+                  <Mail className="w-8 h-8 text-[#002E66]" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#0099FF] mb-2 brand-heading uppercase">GET YOUR SAVINGS REPORT</h3>
                 <p className="text-[#002E66] brand-body">Enter your details to see exactly how much you can save with LSG</p>
