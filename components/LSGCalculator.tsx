@@ -244,14 +244,14 @@ export default function LSGCalculator() {
             </div>
             
             {/* Quick Start Guide */}
-            <div className="bg-aqua-breeze border border-aqua-breeze rounded-2xl p-6 shadow-sm lsg-reveal">
+            <div className="bg-[#abe8e5] border border-[#abe8e5] rounded-2xl p-6 shadow-sm lsg-reveal">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0">
                   <Icon name="lightbulb" className="w-12 h-12" size={48} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-trust-navy mb-2">Quick Start Guide</h3>
-                  <p className="text-trust-navy leading-relaxed brand-body">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Quick Start Guide</h3>
+                  <p className="text-gray-800 leading-relaxed brand-body">
                     Fill out these details to see your personalized cost comparison. The more accurate your information, the better we can estimate your potential savings!
                   </p>
                 </div>
@@ -410,12 +410,12 @@ export default function LSGCalculator() {
 
 
               {/* Gated Savings with LSG */}
-              <div className="bg-aqua-breeze border border-aqua-breeze rounded-2xl p-8 shadow-sm lsg-reveal">
+              <div className="bg-[#abe8e5] border border-[#abe8e5] rounded-2xl p-8 shadow-sm lsg-reveal">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-midnight-core">
+                  <h3 className="text-lg font-semibold text-gray-900">
                     Projected LSG Savings
                   </h3>
-                  <div className="w-12 h-12 bg-aqua-breeze-night rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-[#0a3847] rounded-xl flex items-center justify-center">
                     <Icon name="bullseye-night" className="w-12 h-12" size={48} />
                   </div>
                 </div>
@@ -425,8 +425,8 @@ export default function LSGCalculator() {
                     <div className="flex items-center justify-center mx-auto mb-4">
                       <Icon name="unlock" className="w-16 h-16" size={64} />
                     </div>
-                    <h4 className="text-xl font-semibold text-midnight-core mb-2">Unlock Your Savings</h4>
-                    <p className="text-midnight-core mb-4 brand-body">Get your personalized savings percentage by providing your company details</p>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Unlock Your Savings</h4>
+                    <p className="text-gray-800 mb-4 brand-body">Get your personalized savings percentage by providing your company details</p>
                     <button
                       onClick={handleUnlockSavings}
                       className="text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 lsg-transition lsg-hover-lift shadow-lg hover:shadow-xl"
@@ -437,10 +437,10 @@ export default function LSGCalculator() {
                   </div>
                 ) : (
                   <div>
-                    <div className="text-4xl font-bold text-midnight-core mb-2">
+                    <div className="text-4xl font-bold text-gray-900 mb-2">
                       {savingsPercentage > 0 ? pct(savingsPercentage) : "—"}
                     </div>
-                    <p className="text-midnight-core font-medium brand-body">Expected savings vs in-house operations</p>
+                    <p className="text-gray-800 font-medium brand-body">Expected savings vs in-house operations</p>
                   </div>
                 )}
               </div>
@@ -458,8 +458,8 @@ export default function LSGCalculator() {
                 </div>
                 <h3 className="text-2xl font-bold text-lean-blue mb-2 brand-heading uppercase">GET YOUR SAVINGS REPORT</h3>
                 <p className="text-trust-navy brand-body">Enter your details to see exactly how much you can save with LSG</p>
-                <div className="mt-3 p-3 bg-aqua-breeze border border-aqua-breeze rounded-lg">
-                  <p className="text-sm text-trust-navy">
+                <div className="mt-3 p-3 bg-[#abe8e5] border border-[#abe8e5] rounded-lg">
+                  <p className="text-sm text-gray-900">
                     <strong>Note:</strong> Please use your work email address for business inquiries
                   </p>
                 </div>
@@ -551,11 +551,11 @@ export default function LSGCalculator() {
                   Your personalized LSG cost analysis has been sent to <strong>{leadData.email}</strong>. 
                   The email includes your complete calculation results and cost breakdown.
                 </p>
-                <div className="bg-aqua-breeze border border-aqua-breeze rounded-xl p-4 mb-6">
-                  <p className="text-sm text-trust-navy">
+                <div className="bg-[#abe8e5] border border-[#abe8e5] rounded-xl p-4 mb-6">
+                  <p className="text-sm text-gray-900">
                     <strong>What's in your email:</strong>
                   </p>
-                  <ul className="text-sm text-trust-navy mt-2 space-y-1">
+                  <ul className="text-sm text-gray-800 mt-2 space-y-1">
                     <li>• Your projected savings percentage</li>
                     <li>• Detailed cost breakdown</li>
                     <li>• Business profile summary</li>
