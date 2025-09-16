@@ -40,8 +40,8 @@ export async function GET() {
 
     // Test other tables to see if they have data
     const employerCostCount = await prisma.employerCostData.count()
-    const lsgBaseSeatCount = await prisma.lSGBaseSeat.count()
-    const userCount = await prisma.user.count()
+    const lsgCalculatorLeadCount = await prisma.LSGCalculatorLead.count()
+    const rolesCount = await prisma.roles.count()
 
     return NextResponse.json({
       status: 'success',
@@ -56,11 +56,11 @@ export async function GET() {
         employerCostData: {
           count: employerCostCount
         },
-        lSGBaseSeat: {
-          count: lsgBaseSeatCount
+        LSGCalculatorLead: {
+          count: lsgCalculatorLeadCount
         },
-        user: {
-          count: userCount
+        roles: {
+          count: rolesCount
         }
       },
       timestamp: new Date().toISOString()
