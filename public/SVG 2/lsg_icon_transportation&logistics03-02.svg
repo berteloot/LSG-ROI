@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="ICON" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 300 300">
+  <!-- Generator: Adobe Illustrator 29.7.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 8)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #002e66;
+      }
+
+      .st1 {
+        fill: #09f;
+      }
+    </style>
+  </defs>
+  <circle class="st1" cx="150" cy="150" r="150"/>
+  <g>
+    <rect class="st0" x="103" y="103" width="18.8" height="18.9"/>
+    <rect class="st0" x="103" y="140.6" width="18.8" height="18.9"/>
+    <rect class="st0" x="103" y="178.1" width="18.8" height="18.9"/>
+    <rect class="st0" x="131.2" y="103" width="46.8" height="18.9"/>
+    <rect class="st0" x="131.2" y="140.6" width="46.8" height="18.9"/>
+    <rect class="st0" x="131.2" y="178.1" width="28.1" height="18.9"/>
+    <polygon class="st0" points="184.1 168.9 170.2 181.4 189.7 203.2 203.6 203.2 240.2 162.6 226.3 150 196.7 182.9 184.1 168.9"/>
+    <polygon class="st0" points="184.2 215.6 93.7 215.6 93.7 84.4 187.4 84.4 187.4 159.4 206.2 159.4 206.2 84.4 187.4 65.6 74.9 65.6 74.9 234.4 206.2 234.4 206.2 215.6 184.2 215.6 184.2 215.6"/>
+  </g>
+</svg>

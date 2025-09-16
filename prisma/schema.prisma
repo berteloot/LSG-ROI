@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model EmployerCostData {
+  id              String   @id
+  state           String
+  category        String
+  item            String
+  ratePercent     Float    @map("ratePercent")
+  employerCostUSD Float    @map("employerCostUSD")
+  notes           String?
+  source          String?
+  createdAt       DateTime @default(now()) @map("createdAt")
+
+  @@unique([state, category, item])
+  @@index([category])
+  @@index([state])
+  @@map("EmployerCostData")
+}
+
+model role_categories {
+  category_id   Int      @id @default(autoincrement())
+  category_name String   @unique
+  description   String?
+  monthly_cost  Float?   @default(0)
+  roles         roles[]
+
+  @@map("role_categories")
+}
+
+model LSGCalculatorLead {
+  id                      String   @id
+  email                   String
+  companyName             String
+  state                   String
+  baseSalary              Float
+  fteCount                Int
+  roleCategoryKey         Int
+  totalEmployerLoad       Float
+  employerExtras          Float
+  inHouseTotalCost        Float
+  lsgCost                 Float
+  annualSavingsPercentage Float
+  inclusions              String?  // Store cost inclusions as JSON string
+  roleCategoryName        String?  // Store readable role category name
+  costBreakdown           String?  // Store detailed cost breakdown for email
+  emailSent               Boolean  @default(false) // Track if email was sent successfully
+  emailSentAt             DateTime? // When email was sent
+  createdAt               DateTime @default(now())
+
+  @@index([companyName])
+  @@index([createdAt])
+  @@index([email])
+}
+
+model roles {
+  role_id         Int               @id @default(autoincrement())
+  category_id     Int
+  role_name       String
+  region          String?
+  seniority       String?
+  active          Boolean?          @default(true)
+  created_at      DateTime?         @default(now())
+  updated_at      DateTime?         @default(now())
+  role_categories role_categories   @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: NoAction)
+}
