@@ -80,9 +80,9 @@ export async function POST(req: NextRequest) {
         inHouseTotalCost: calculatedCosts || 0,
         lsgCost: (baseMonthlySalary * 0.6 * fteCount) || 0,
         annualSavingsPercentage: calculatedSavings || 0,
-        inclusions: inclusions, // Store the cost inclusions as JSON
-        roleCategoryName: roleCategoryName, // Store the readable role name
-        costBreakdown: costBreakdown, // Store the detailed cost breakdown for email
+        inclusions: JSON.stringify(inclusions),
+        roleCategoryName: roleCategoryName,
+        costBreakdown: JSON.stringify(costBreakdown),
         createdAt: new Date()
       }
     });

@@ -47,9 +47,9 @@ model LSGCalculatorLead {
   inHouseTotalCost        Float
   lsgCost                 Float
   annualSavingsPercentage Float
-  inclusions              String?  // Store cost inclusions as JSON string
+  inclusions              Json?    // Store cost inclusions as structured JSON
   roleCategoryName        String?  // Store readable role category name
-  costBreakdown           String?  // Store detailed cost breakdown for email
+  costBreakdown           Json?    // Store detailed cost breakdown as structured JSON
   emailSent               Boolean  @default(false) // Track if email was sent successfully
   emailSentAt             DateTime? // When email was sent
   createdAt               DateTime @default(now())
