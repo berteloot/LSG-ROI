@@ -80,9 +80,9 @@ export async function POST(req: NextRequest) {
         inHouseTotalCost: calculatedCosts || 0,
         lsgCost: (baseMonthlySalary * 0.6 * fteCount) || 0,
         annualSavingsPercentage: calculatedSavings || 0,
-        inclusions: JSON.stringify(inclusions),
+        inclusions: inclusions,
         roleCategoryName: roleCategoryName,
-        costBreakdown: JSON.stringify(costBreakdown),
+        costBreakdown: costBreakdown,
         createdAt: new Date()
       }
     });

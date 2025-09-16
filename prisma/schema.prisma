@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model EmployerCostData {
@@ -47,9 +47,9 @@ model LSGCalculatorLead {
   inHouseTotalCost        Float
   lsgCost                 Float
   annualSavingsPercentage Float
-  inclusions              Json?    // Store cost inclusions as structured JSON
+  inclusions              Json?
   roleCategoryName        String?  // Store readable role category name
-  costBreakdown           Json?    // Store detailed cost breakdown as structured JSON
+  costBreakdown           Json?
   emailSent               Boolean  @default(false) // Track if email was sent successfully
   emailSentAt             DateTime? // When email was sent
   createdAt               DateTime @default(now())
