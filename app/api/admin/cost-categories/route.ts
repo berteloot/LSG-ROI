@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 // GET - Fetch all role categories
 export async function GET(req: NextRequest) {
   try {
-    const categories = await prisma.role_categories.findMany({
+    const categories = await prisma.roleCategories.findMany({
       orderBy: { category_name: 'asc' },
       select: {
         category_id: true,
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Check if category with same name already exists
-    const existingCategory = await prisma.role_categories.findFirst({
+    const existingCategory = await prisma.roleCategories.findFirst({
       where: { category_name: name.trim() }
     });
 
@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const category = await prisma.role_categories.create({
+    const category = await prisma.roleCategories.create({
       data: {
         category_name: name.trim(),
         description: description?.trim() || '',

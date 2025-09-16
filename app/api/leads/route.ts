@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     // Get role category name from database using the ID
     let roleCategoryName = "Business Operations"; // Default fallback
     try {
-      const category = await prisma.role_categories.findUnique({
+      const category = await prisma.roleCategories.findUnique({
         where: { category_id: parseInt(selectedRoleCategory) },
         select: { category_name: true }
       });
@@ -169,7 +169,7 @@ async function sendCalculationEmail(data: {
   // Get role category name from database
   let selectedRole = "Business Operations"; // Default fallback
   try {
-    const category = await prisma.role_categories.findUnique({
+    const category = await prisma.roleCategories.findUnique({
       where: { category_id: parseInt(selectedRoleCategory.toString()) },
       select: { category_name: true }
     });

@@ -6,7 +6,7 @@ async function main() {
   console.log('Seeding database...');
 
   // Create sample role categories
-  const categories = await prisma.role_categories.createMany({
+  const categories = await prisma.roleCategories.createMany({
     data: [
       {
         category_name: 'Software Development',

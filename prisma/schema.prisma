@@ -24,12 +24,12 @@ model EmployerCostData {
   @@map("EmployerCostData")
 }
 
-model role_categories {
+model RoleCategories {
   category_id   Int      @id @default(autoincrement())
   category_name String   @unique
   description   String?
   monthly_cost  Float?   @default(0)
-  roles         roles[]
+  roles         Roles[]
 
   @@map("role_categories")
 }
@@ -59,7 +59,7 @@ model LSGCalculatorLead {
   @@index([email])
 }
 
-model roles {
+model Roles {
   role_id         Int               @id @default(autoincrement())
   category_id     Int
   role_name       String
@@ -68,5 +68,5 @@ model roles {
   active          Boolean?          @default(true)
   created_at      DateTime?         @default(now())
   updated_at      DateTime?         @default(now())
-  role_categories role_categories   @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: NoAction)
+  roleCategory    RoleCategories    @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: NoAction)
 }

@@ -16,7 +16,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     }
 
     // Check if category exists
-    const existingCategory = await prisma.role_categories.findUnique({
+    const existingCategory = await prisma.roleCategories.findUnique({
       where: { category_id: parseInt(id) }
     });
 
@@ -28,7 +28,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     }
 
     // Check if another category with same name already exists (excluding current one)
-    const duplicateCategory = await prisma.role_categories.findFirst({
+    const duplicateCategory = await prisma.roleCategories.findFirst({
       where: {
         category_name: name.trim(),
         category_id: { not: parseInt(id) }
@@ -42,7 +42,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
       );
     }
 
-    const updatedCategory = await prisma.role_categories.update({
+    const updatedCategory = await prisma.roleCategories.update({
       where: { category_id: parseInt(id) },
       data: {
         category_name: name.trim(),
@@ -83,7 +83,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
     const { id } = params;
 
     // Check if category exists
-    const existingCategory = await prisma.role_categories.findUnique({
+    const existingCategory = await prisma.roleCategories.findUnique({
       where: { category_id: parseInt(id) }
     });
 
@@ -96,7 +96,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
 
     // Roles table has been removed, so no need to check for role dependencies
 
-    await prisma.role_categories.delete({
+    await prisma.roleCategories.delete({
       where: { category_id: parseInt(id) }
     });
 

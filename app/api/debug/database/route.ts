@@ -7,8 +7,8 @@ export async function GET() {
     await prisma.$connect()
     
     // Test role_categories table specifically
-    const roleCategoriesCount = await prisma.role_categories.count()
-    const roleCategories = await prisma.role_categories.findMany({
+    const roleCategoriesCount = await prisma.roleCategories.count()
+    const roleCategories = await prisma.roleCategories.findMany({
       take: 5,
       select: {
         category_id: true,
@@ -19,7 +19,7 @@ export async function GET() {
     })
 
     // Test the exact query used by the API
-    const apiQueryResult = await prisma.role_categories.findMany({
+    const apiQueryResult = await prisma.roleCategories.findMany({
       orderBy: { category_name: 'asc' },
       select: {
         category_id: true,
