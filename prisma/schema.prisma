@@ -69,4 +69,6 @@ model Roles {
   created_at      DateTime?         @default(now())
   updated_at      DateTime?         @default(now())
   roleCategory    RoleCategories    @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@map("roles")
 }
