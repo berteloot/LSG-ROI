@@ -250,8 +250,8 @@ export default function LSGCalculator() {
                   <Icon name="lightbulb" className="w-12 h-12" size={48} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Quick Start Guide</h3>
-                  <p className="text-gray-800 leading-relaxed brand-body">
+                  <h3 className="text-lg font-semibold text-[#0a3847] mb-2">Quick Start Guide</h3>
+                  <p className="text-[#0a3847] leading-relaxed brand-body">
                     Fill out these details to see your personalized cost comparison. The more accurate your information, the better we can estimate your potential savings!
                   </p>
                 </div>
@@ -362,17 +362,17 @@ export default function LSGCalculator() {
               {/* Total Employer Load */}
               <div className="bg-lean-blue border border-lean-blue rounded-2xl p-8 shadow-sm lsg-reveal">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-white">
+                  <h3 className="text-lg font-semibold text-[#001f38]">
                     Total Employer Load (% of Wage)
                   </h3>
                   <div>
                     <Icon name="calculator" className="w-12 h-12" size={48} />
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-white mb-2">
+                <div className="text-4xl font-bold text-[#001f38] mb-2">
                   {results ? pct(results.totalEmployerLoadPct) : "—"}
                 </div>
-                <p className="text-white font-medium brand-body">Calculation includes: payroll taxes, employee benefits, administrative overhead, IT infrastructure, workforce management, and the monthly cost of your selected role</p>
+                <p className="text-[#001f38] font-medium brand-body">Calculation includes: payroll taxes, employee benefits, administrative overhead, IT infrastructure, workforce management, and the monthly cost of your selected role</p>
               </div>
 
               {/* Monthly Employer Extras per FTE */}
@@ -394,17 +394,17 @@ export default function LSGCalculator() {
               {/* Monthly In-House Total Cost for All FTEs */}
               <div className="bg-solar-orange border border-solar-orange rounded-2xl p-8 shadow-sm lsg-reveal">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-white">
+                  <h3 className="text-lg font-semibold text-[#450d0a]">
                     Monthly In-House Total Cost for All FTEs
                   </h3>
                   <div className="w-12 h-12 bg-solar-orange-night rounded-xl flex items-center justify-center">
                     <Icon name="skyline" className="w-12 h-12" size={48} />
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-white mb-2">
+                <div className="text-4xl font-bold text-[#450d0a] mb-2">
                   {results ? money(results.inHouseMonthlyAllFTEs) : "—"}
                 </div>
-                <p className="text-white font-medium brand-body">Monthly base salary + employer extras for all FTEs</p>
+                <p className="text-[#450d0a] font-medium brand-body">Monthly base salary + employer extras for all FTEs</p>
               </div>
 
 
@@ -412,7 +412,7 @@ export default function LSGCalculator() {
               {/* Gated Savings with LSG */}
               <div className="bg-[#abe8e5] border border-[#abe8e5] rounded-2xl p-8 shadow-sm lsg-reveal">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-[#0a3847]">
                     Projected LSG Savings
                   </h3>
                   <div className="w-12 h-12 bg-[#0a3847] rounded-xl flex items-center justify-center">
@@ -423,10 +423,20 @@ export default function LSGCalculator() {
                 {!showSavings ? (
                   <div className="text-center py-6">
                     <div className="flex items-center justify-center mx-auto mb-4">
-                      <Icon name="unlock" className="w-16 h-16" size={64} />
+                      <svg 
+                        width="64" 
+                        height="64" 
+                        viewBox="0 0 300 300" 
+                        className="w-16 h-16"
+                      >
+                        <g>
+                          <rect fill="#0a3847" x="140.6" y="168.8" width="18.8" height="28.1"/>
+                          <path fill="#0a3847" d="M206.2,131.2v-9.4h0c0-31.1-25.2-56.2-56.2-56.2s-46.8,16.8-53.8,39.9l7,7h10.6c4.2-16.2,18.8-28.1,36.3-28.1s37.5,16.8,37.5,37.5,0,0,0,0h0v9.4h-112.5v103.1h130.6l19.4-18.8v-84.4h-18.8ZM206.2,215.6h-112.5v-65.6h112.5v65.6Z"/>
+                        </g>
+                      </svg>
                     </div>
-                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Unlock Your Savings</h4>
-                    <p className="text-gray-800 mb-4 brand-body">Get your personalized savings percentage by providing your company details</p>
+                    <h4 className="text-xl font-semibold text-[#0a3847] mb-2">Unlock Your Savings</h4>
+                    <p className="text-[#0a3847] mb-4 brand-body">Get your personalized savings percentage by providing your company details</p>
                     <button
                       onClick={handleUnlockSavings}
                       className="text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 lsg-transition lsg-hover-lift shadow-lg hover:shadow-xl"
@@ -437,10 +447,10 @@ export default function LSGCalculator() {
                   </div>
                 ) : (
                   <div>
-                    <div className="text-4xl font-bold text-gray-900 mb-2">
+                    <div className="text-4xl font-bold text-[#0a3847] mb-2">
                       {savingsPercentage > 0 ? pct(savingsPercentage) : "—"}
                     </div>
-                    <p className="text-gray-800 font-medium brand-body">Expected savings vs in-house operations</p>
+                    <p className="text-[#0a3847] font-medium brand-body">Expected savings vs in-house operations</p>
                   </div>
                 )}
               </div>
@@ -459,7 +469,7 @@ export default function LSGCalculator() {
                 <h3 className="text-2xl font-bold text-lean-blue mb-2 brand-heading uppercase">GET YOUR SAVINGS REPORT</h3>
                 <p className="text-trust-navy brand-body">Enter your details to see exactly how much you can save with LSG</p>
                 <div className="mt-3 p-3 bg-[#abe8e5] border border-[#abe8e5] rounded-lg">
-                  <p className="text-sm text-gray-900">
+                  <p className="text-sm text-[#0a3847]">
                     <strong>Note:</strong> Please use your work email address for business inquiries
                   </p>
                 </div>
@@ -552,10 +562,10 @@ export default function LSGCalculator() {
                   The email includes your complete calculation results and cost breakdown.
                 </p>
                 <div className="bg-[#abe8e5] border border-[#abe8e5] rounded-xl p-4 mb-6">
-                  <p className="text-sm text-gray-900">
+                  <p className="text-sm text-[#0a3847]">
                     <strong>What's in your email:</strong>
                   </p>
-                  <ul className="text-sm text-gray-800 mt-2 space-y-1">
+                  <ul className="text-sm text-[#0a3847] mt-2 space-y-1">
                     <li>• Your projected savings percentage</li>
                     <li>• Detailed cost breakdown</li>
                     <li>• Business profile summary</li>
