@@ -26,49 +26,185 @@ model EmployerCostData {
 
 model RoleCategories {
   category_id   Int      @id @default(autoincrement())
-  category_name String   @unique
+  category_name String   @unique @db.VarChar(100)
   description   String?
-  monthly_cost  Float?   @default(0)
-  roles         Roles[]
+  monthly_cost  Decimal? @default(0) @db.Decimal(10, 2)
 
   @@map("role_categories")
 }
 
 model LSGCalculatorLead {
-  id                      String   @id
+  id                      String    @id
   email                   String
   companyName             String
   state                   String
-  baseSalary              Float
+  baseSalary              Decimal   @db.Decimal(10, 2)
   fteCount                Int
   roleCategoryKey         Int
-  totalEmployerLoad       Float
-  employerExtras          Float
-  inHouseTotalCost        Float
-  lsgCost                 Float
-  annualSavingsPercentage Float
+  totalEmployerLoad       Decimal   @db.Decimal(10, 2)
+  employerExtras          Decimal   @db.Decimal(10, 2)
+  inHouseTotalCost        Decimal   @db.Decimal(10, 2)
+  lsgCost                 Decimal   @db.Decimal(10, 2)
+  annualSavingsPercentage Decimal   @db.Decimal(10, 2)
+  createdAt               DateTime  @default(now())
   inclusions              Json?
-  roleCategoryName        String?  // Store readable role category name
+  roleCategoryName        String?
+  emailSent               Boolean   @default(false)
+  emailSentAt             DateTime?
   costBreakdown           Json?
-  emailSent               Boolean  @default(false) // Track if email was sent successfully
-  emailSentAt             DateTime? // When email was sent
-  createdAt               DateTime @default(now())
 
   @@index([companyName])
   @@index([createdAt])
   @@index([email])
 }
 
-model Roles {
-  role_id         Int               @id @default(autoincrement())
-  category_id     Int
-  role_name       String
-  region          String?
-  seniority       String?
-  active          Boolean?          @default(true)
-  created_at      DateTime?         @default(now())
-  updated_at      DateTime?         @default(now())
-  roleCategory    RoleCategories    @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: NoAction)
+model Assessment {
+  id         String      @id
+  appType    String
+  orgId      String
+  userId     String
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime
+  User       User        @relation(fields: [userId], references: [id])
+  ROIInputs  ROIInputs?
+  ROIResults ROIResults?
+}
 
-  @@map("roles")
+model FormulaVersion {
+  id         String   @id
+  appType    String
+  version    Int
+  configJson Json
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+}
+
+model LSGBaseSeat {
+  id          String   @id
+  delivery    String
+  role        String
+  monthlyCost Float
+  notes       String?
+  updatedAt   DateTime
+
+  @@unique([delivery, role])
+  @@index([delivery])
+  @@index([role])
+}
+
+model LSGCostEstimate {
+  id        String   @id
+  state     String   @unique
+  costUSD   Float
+  notes     String?
+  source    String?
+  updatedAt DateTime
+
+  @@index([state])
+}
+
+model LSGDiscount {
+  id        String   @id
+  type      String
+  tier      String
+  discount  Float
+  notes     String?
+  updatedAt DateTime
+
+  @@unique([type, tier])
+  @@index([tier])
+  @@index([type])
+}
+
+model LSGMultiplier {
+  id         String   @id
+  category   String
+  value      String
+  multiplier Float
+  notes      String?
+  updatedAt  DateTime
+
+  @@unique([category, value])
+  @@index([category])
+  @@index([value])
+}
+
+model LSGOnboarding {
+  id        String   @id
+  type      String   @unique
+  cost      Float
+  notes     String?
+  updatedAt DateTime
+
+  @@index([type])
+}
+
+model ROIInputs {
+  id                        String     @id
+  assessmentId              String     @unique
+  currency                  String
+  periodMonths              Int
+  fteCount                  Float
+  fullyLoadedCostPerFTE     Float
+  annualAttritionRate       Float
+  costPerHire               Float
+  trainingCostPerHire       Float
+  errorRate                 Float
+  costPerError              Float
+  volumePerMonth            Float
+  revenuePerUnit            Float
+  fteReductionPct           Float
+  attritionReductionPct     Float
+  errorReductionPct         Float
+  volumeUpliftPct           Float
+  oneTimeImplementationCost Float
+  monthlySubscriptionCost   Float
+  Assessment                Assessment @relation(fields: [assessmentId], references: [id])
+}
+
+model ROIResults {
+  id              String     @id
+  assessmentId    String     @unique
+  savingsLabor    Float
+  savingsTurnover Float
+  savingsQuality  Float
+  revenueUplift   Float
+  totalSavings    Float
+  totalCosts      Float
+  netBenefit      Float
+  roiPct          Float
+  paybackMonths   Float
+  npv             Float?
+  irr             Float?
+  Assessment      Assessment @relation(fields: [assessmentId], references: [id])
+}
+
+model StateCostSummary {
+  id                    String   @id
+  state                 String   @unique
+  totalFederalTax       Float
+  totalStateTax         Float
+  totalHealthcare       Float
+  totalRetirement       Float
+  totalPaidTimeOff      Float
+  totalInsurance        Float
+  totalOtherBenefits    Float
+  totalAdministrative   Float
+  totalITInfrastructure Float
+  totalTelecom          Float
+  totalEquipment        Float
+  totalRealEstate       Float
+  totalWorkforceMgmt    Float
+  totalAnnualCost       Float
+  updatedAt             DateTime
+
+  @@index([state])
+}
+
+model User {
+  id          String       @id
+  email       String       @unique
+  createdAt   DateTime     @default(now())
+  companyName String?
+  Assessment  Assessment[]
 }

@@ -236,8 +236,7 @@ export default function LSGCalculator() {
           <div className="space-y-8">
             {/* Section Header */}
             <div className="text-center lg:text-left lsg-reveal min-h-[150px] flex flex-col justify-end">
-              <h2 className="text-3xl font-bold text-[#001F38] mb-3 flex items-center justify-center lg:justify-start gap-3">
-                <img src="/Icons_ROI/lsg_icon_Target_BlueNavy_Round.svg" alt="target icon" className="w-8 h-8" width={32} height={32} />
+              <h2 className="text-3xl font-bold text-[#001F38] mb-3 brand-heading">
                 Company Information
               </h2>
               <p className="text-[#002E66] text-lg brand-body">Tell us about your business to get accurate cost comparisons</p>
@@ -381,9 +380,7 @@ export default function LSGCalculator() {
                   <h3 className="text-lg font-semibold text-[#002E66]">
                     Monthly Cost Above Base Wage
                   </h3>
-                  <div className="w-12 h-12 bg-[#002E66] rounded-xl flex items-center justify-center">
-                    <Icon name="financial-services-alt" className="w-12 h-12" size={48} />
-                  </div>
+                  <Icon name="financial-services-alt" className="w-12 h-12" size={48} />
                 </div>
                 <div className="text-4xl font-bold text-[#002E66] mb-2">
                   {results ? money(perFteExtras) : "—"}
