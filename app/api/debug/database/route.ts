@@ -43,7 +43,6 @@ export async function GET() {
     // Test other tables to see if they have data
     const employerCostCount = await prisma.employerCostData.count()
     const lsgCalculatorLeadCount = await prisma.lSGCalculatorLead.count()
-    const rolesCount = await prisma.roles.count()
 
     return NextResponse.json({
       status: 'success',
@@ -60,9 +59,6 @@ export async function GET() {
         },
         LSGCalculatorLead: {
           count: lsgCalculatorLeadCount
-        },
-        roles: {
-          count: rolesCount
         }
       },
       timestamp: new Date().toISOString()
