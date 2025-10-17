@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 300 300">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #002e66;
+      }
+
+      .st1 {
+        fill: #09f;
+      }
+    </style>
+  </defs>
+  <g id="CONTAINER">
+    <circle class="st1" cx="150" cy="150" r="150"/>
+  </g>
+  <g id="ICON">
+    <g>
+      <polygon class="st0" points="131.3 225 168.8 225 178.1 215.6 121.9 215.6 131.3 225"/>
+      <path class="st0" d="M206.3,131.3c0-31.1-25.2-56.3-56.3-56.3s-56.3,25.2-56.3,56.3,7.2,31.6,18.7,41.9v23.7l9.4,9.4h56.2l9.4-9.4v-23.7c11.5-10.3,18.8-25.3,18.8-42ZM168.8,163.7v23.8h-9.4v-46.9h9.4v-9.4h-9.4s-18.7,0-18.7,0h0s-9.4,0-9.4,0v9.4h9.4v46.9h-9.4v-23.8c-11.2-6.5-18.7-18.6-18.7-32.5,0-20.7,16.8-37.5,37.5-37.5s37.5,16.8,37.5,37.5-7.5,26-18.8,32.5Z"/>
+    </g>
+  </g>
+</svg>
