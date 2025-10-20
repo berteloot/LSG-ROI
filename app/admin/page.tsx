@@ -145,6 +145,7 @@ export default function AdminPage() {
       const response = await fetch('/api/admin/users');
       if (!response.ok) throw new Error('Failed to fetch users');
       const result = await response.json();
+      // Use the new data structure - show all recent submissions
       setUsers(result.data);
     } catch (err) {
       console.error('Failed to fetch users:', err);
@@ -1109,13 +1110,13 @@ export default function AdminPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-lg font-medium text-midnight-core">
-                    Users ({users.length})
+                    Recent Submissions ({users.length})
                   </h3>
                   <p className="text-sm text-gray-500 mt-1">
-                    Manage user accounts and their associated cost assessment data
+                    All recent cost assessment submissions from users
                   </p>
                   <p className="text-xs text-gray-400 mt-1">
-                    Showing unique users by email address
+                    Showing all submissions ordered by most recent first
                   </p>
                 </div>
                 <button onClick={fetchUsers} className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
@@ -1134,19 +1135,22 @@ export default function AdminPage() {
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company Name</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assessments</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created At</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">State</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role Category</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">FTEs</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email Sent</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Submitted At</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
                     {users.length === 0 ? (
                       <tr>
-                        <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
+                        <td colSpan={8} className="px-6 py-8 text-center text-gray-500">
                           <div className="flex flex-col items-center space-y-2">
                             <div className="text-gray-400">👥</div>
-                            <p>No users found</p>
-                            <p className="text-sm">Users will appear here after they submit cost assessments</p>
+                            <p>No submissions found</p>
+                            <p className="text-sm">Submissions will appear here after users submit cost assessments</p>
                           </div>
                         </td>
                       </tr>
@@ -1160,18 +1164,31 @@ export default function AdminPage() {
                             {user.email || 'N/A'}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                              {user.assessmentCount || 1}
+                            {user.state || 'N/A'}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {user.roleCategoryName || 'N/A'}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {user.fteCount || 'N/A'}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                              user.emailSent 
+                                ? 'bg-green-100 text-green-800' 
+                                : 'bg-red-100 text-red-800'
+                            }`}>
+                              {user.emailSent ? 'Yes' : 'No'}
                             </span>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {new Date(user.createdAt).toLocaleDateString()}
+                            {new Date(user.createdAt).toLocaleString()}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <button
                               onClick={() => deleteUser(user.id)}
                               className="text-red-600 hover:text-red-900"
-                              title="Delete User"
+                              title="Delete Submission"
                             >
                               <Trash2 className="w-4 h-4" />
                             </button>

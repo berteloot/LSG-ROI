@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 
 export async function GET(req: NextRequest) {
   try {
-    // Get all records to group by email
+    // Get all records ordered by most recent first
     const allRecords = await prisma.lSGCalculatorLead.findMany({
       orderBy: { createdAt: 'desc' },
       select: {
@@ -11,10 +11,16 @@ export async function GET(req: NextRequest) {
         companyName: true,
         email: true,
         createdAt: true,
+        state: true,
+        baseSalary: true,
+        fteCount: true,
+        roleCategoryName: true,
+        emailSent: true,
+        emailSentAt: true,
       }
     });
 
-    // Group by email to get unique users
+    // Group by email to get unique users for the count
     const uniqueUsers = allRecords.reduce((acc, record) => {
       if (!acc[record.email]) {
         acc[record.email] = {
@@ -34,15 +40,18 @@ export async function GET(req: NextRequest) {
       return acc;
     }, {} as Record<string, any>);
 
-    // Convert to array and sort by most recent
-    const users = Object.values(uniqueUsers).sort((a, b) => 
+    // Convert unique users to array and sort by most recent
+    const uniqueUsersArray = Object.values(uniqueUsers).sort((a, b) => 
       new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     );
 
+    // Return both recent submissions and unique users
     return NextResponse.json({ 
       success: true, 
-      data: users,
-      count: users.length,
+      data: allRecords, // Show all recent submissions
+      uniqueUsers: uniqueUsersArray, // Keep unique users for reference
+      count: allRecords.length, // Total submissions
+      uniqueCount: uniqueUsersArray.length, // Unique users
       totalAssessments: allRecords.length
     });
   } catch (error) {
