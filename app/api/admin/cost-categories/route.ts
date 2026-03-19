@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { requireAdminAuth } from "@/lib/admin-auth";
 
-// GET - Fetch all role categories
 export async function GET(req: NextRequest) {
+  const authError = requireAdminAuth(req);
+  if (authError) return authError;
+
   try {
     const categories = await prisma.roleCategories.findMany({
       orderBy: { category_name: 'asc' },
@@ -21,7 +24,7 @@ export async function GET(req: NextRequest) {
         name: cat.category_name,
         description: cat.description || '',
         monthlyCost: cat.monthly_cost ? parseFloat(cat.monthly_cost.toString()) : 0,
-        isActive: true // role_categories doesn't have an active field, so we'll default to true
+        isActive: true
       })),
       count: categories.length
     });
@@ -34,8 +37,10 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// POST - Create new role category
 export async function POST(req: NextRequest) {
+  const authError = requireAdminAuth(req);
+  if (authError) return authError;
+
   try {
     const body = await req.json();
     const { name, description, monthlyCost = 0 } = body;
@@ -47,7 +52,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Check if category with same name already exists
     const existingCategory = await prisma.roleCategories.findFirst({
       where: { category_name: name.trim() }
     });

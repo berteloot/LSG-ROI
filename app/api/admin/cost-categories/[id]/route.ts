@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { requireAdminAuth } from "@/lib/admin-auth";
 
-// PUT - Update role category
 export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+  const authError = requireAdminAuth(req);
+  if (authError) return authError;
+
   try {
     const { id } = params;
     const body = await req.json();
@@ -15,7 +18,6 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
       );
     }
 
-    // Check if category exists
     const existingCategory = await prisma.roleCategories.findUnique({
       where: { category_id: parseInt(id) }
     });
@@ -27,7 +29,6 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
       );
     }
 
-    // Check if another category with same name already exists (excluding current one)
     const duplicateCategory = await prisma.roleCategories.findFirst({
       where: {
         category_name: name.trim(),
@@ -77,12 +78,13 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
   }
 }
 
-// DELETE - Delete role category
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+  const authError = requireAdminAuth(req);
+  if (authError) return authError;
+
   try {
     const { id } = params;
 
-    // Check if category exists
     const existingCategory = await prisma.roleCategories.findUnique({
       where: { category_id: parseInt(id) }
     });
@@ -93,8 +95,6 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
         { status: 404 }
       );
     }
-
-    // Roles table has been removed, so no need to check for role dependencies
 
     await prisma.roleCategories.delete({
       where: { category_id: parseInt(id) }

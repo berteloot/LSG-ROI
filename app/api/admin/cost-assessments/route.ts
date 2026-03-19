@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { requireAdminAuth } from "@/lib/admin-auth";
 
 export async function GET(req: NextRequest) {
+  const authError = requireAdminAuth(req);
+  if (authError) return authError;
+
   try {
     const assessments = await prisma.lSGCalculatorLead.findMany({
       orderBy: { createdAt: 'desc' },
@@ -22,10 +26,10 @@ export async function GET(req: NextRequest) {
       }
     });
 
-    return NextResponse.json({ 
-      success: true, 
+    return NextResponse.json({
+      success: true,
       data: assessments,
-      count: assessments.length 
+      count: assessments.length
     });
   } catch (error) {
     console.error("Error fetching cost assessments:", error);

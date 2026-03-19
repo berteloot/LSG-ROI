@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { requireAdminAuth } from "@/lib/admin-auth";
 
 export async function GET(req: NextRequest) {
+  const authError = requireAdminAuth(req);
+  if (authError) return authError;
+
   try {
-    // Get all records ordered by most recent first
     const allRecords = await prisma.lSGCalculatorLead.findMany({
       orderBy: { createdAt: 'desc' },
       select: {
@@ -20,7 +23,6 @@ export async function GET(req: NextRequest) {
       }
     });
 
-    // Group by email to get unique users for the count
     const uniqueUsers = allRecords.reduce((acc, record) => {
       if (!acc[record.email]) {
         acc[record.email] = {
@@ -31,7 +33,6 @@ export async function GET(req: NextRequest) {
           assessmentCount: 1
         };
       } else {
-        // Update assessment count and keep the most recent creation date
         acc[record.email].assessmentCount += 1;
         if (new Date(record.createdAt) > new Date(acc[record.email].createdAt)) {
           acc[record.email].createdAt = record.createdAt;
@@ -40,18 +41,16 @@ export async function GET(req: NextRequest) {
       return acc;
     }, {} as Record<string, any>);
 
-    // Convert unique users to array and sort by most recent
-    const uniqueUsersArray = Object.values(uniqueUsers).sort((a, b) => 
+    const uniqueUsersArray = Object.values(uniqueUsers).sort((a, b) =>
       new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     );
 
-    // Return both recent submissions and unique users
-    return NextResponse.json({ 
-      success: true, 
-      data: allRecords, // Show all recent submissions
-      uniqueUsers: uniqueUsersArray, // Keep unique users for reference
-      count: allRecords.length, // Total submissions
-      uniqueCount: uniqueUsersArray.length, // Unique users
+    return NextResponse.json({
+      success: true,
+      data: allRecords,
+      uniqueUsers: uniqueUsersArray,
+      count: allRecords.length,
+      uniqueCount: uniqueUsersArray.length,
       totalAssessments: allRecords.length
     });
   } catch (error) {

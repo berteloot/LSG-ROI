@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { requireAdminAuth } from "@/lib/admin-auth";
 
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+  const authError = requireAdminAuth(req);
+  if (authError) return authError;
+
   try {
     const { id } = params;
 
-    // Use a transaction to ensure both user and assessment data are deleted atomically
     await prisma.$transaction(async (tx) => {
-      // First, check if the user exists
       const user = await tx.lSGCalculatorLead.findUnique({
         where: { id },
         select: { id: true, companyName: true, email: true }
@@ -17,7 +19,6 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
         throw new Error('User not found');
       }
 
-      // Delete the user (this will cascade to related data if foreign key constraints exist)
       await tx.lSGCalculatorLead.delete({
         where: { id }
       });
@@ -25,13 +26,13 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
       console.log(`Deleted user: ${user.companyName} (${user.email}) with ID: ${id}`);
     });
 
-    return NextResponse.json({ 
-      success: true, 
-      message: "User and associated assessment data deleted successfully" 
+    return NextResponse.json({
+      success: true,
+      message: "User and associated assessment data deleted successfully"
     });
   } catch (error) {
     console.error("Error deleting user:", error);
-    
+
     if (error instanceof Error && error.message === 'User not found') {
       return NextResponse.json(
         { error: "User not found" },

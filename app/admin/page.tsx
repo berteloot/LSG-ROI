@@ -32,9 +32,16 @@ export default function AdminPage() {
   // Authentication state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
+  const [adminToken, setAdminToken] = useState('');
   const [authError, setAuthError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  // Helper to create authenticated fetch headers
+  const authHeaders = (extra?: Record<string, string>) => ({
+    'Authorization': `Bearer ${adminToken}`,
+    ...extra,
+  });
 
   // Data state
   const [data, setData] = useState<any[]>([]);
@@ -77,15 +84,22 @@ export default function AdminPage() {
     setMounted(true);
     
     // Check if already authenticated (from session storage)
-    const authStatus = sessionStorage.getItem('adminAuthenticated');
-    if (authStatus === 'true') {
+    const savedToken = sessionStorage.getItem('adminToken');
+    if (savedToken) {
+      setAdminToken(savedToken);
       setIsAuthenticated(true);
+    }
+  }, []);
+
+  // Fetch data whenever adminToken becomes available
+  useEffect(() => {
+    if (adminToken && isAuthenticated) {
       fetchData();
       fetchUsers();
       fetchCostAssessments();
       fetchCostCategories();
     }
-  }, []);
+  }, [adminToken, isAuthenticated]);
 
   const handleAuthentication = async () => {
     if (!password.trim()) {
@@ -106,13 +120,12 @@ export default function AdminPage() {
       });
 
       if (response.ok) {
+        const token = password;
+        setAdminToken(token);
         setIsAuthenticated(true);
         setPassword('');
         setAuthError('');
-        sessionStorage.setItem('adminAuthenticated', 'true');
-        fetchData();
-        fetchUsers();
-        fetchCostAssessments();
+        sessionStorage.setItem('adminToken', token);
       } else {
         const error = await response.json();
         setAuthError(error.error || 'Invalid password');
@@ -128,7 +141,7 @@ export default function AdminPage() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('/api/admin/state-costs');
+      const response = await fetch('/api/admin/state-costs', { headers: authHeaders() });
       if (!response.ok) throw new Error('Failed to fetch data');
       const result = await response.json();
       setData(result.data.map((item: any) => ({ ...item, isEditing: false, originalData: { ...item } })));
@@ -142,7 +155,7 @@ export default function AdminPage() {
   const fetchUsers = async () => {
     setUsersLoading(true);
     try {
-      const response = await fetch('/api/admin/users');
+      const response = await fetch('/api/admin/users', { headers: authHeaders() });
       if (!response.ok) throw new Error('Failed to fetch users');
       const result = await response.json();
       // Use the new data structure - show all recent submissions
@@ -157,7 +170,7 @@ export default function AdminPage() {
   const fetchCostAssessments = async () => {
     setAssessmentsLoading(true);
     try {
-      const response = await fetch('/api/admin/cost-assessments');
+      const response = await fetch('/api/admin/cost-assessments', { headers: authHeaders() });
       if (!response.ok) throw new Error('Failed to fetch cost assessments');
       const result = await response.json();
       setCostAssessments(result.data);
@@ -171,7 +184,7 @@ export default function AdminPage() {
   const fetchCostCategories = async () => {
     setCategoriesLoading(true);
     try {
-      const response = await fetch('/api/admin/cost-categories');
+      const response = await fetch('/api/admin/cost-categories', { headers: authHeaders() });
       if (!response.ok) throw new Error('Failed to fetch cost categories');
       const result = await response.json();
       setCostCategories(result.data.map((category: any) => ({ 
@@ -202,7 +215,7 @@ export default function AdminPage() {
     try {
       const response = await fetch(`/api/admin/state-costs/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({
           state: item.state,
           category: item.category,
@@ -242,7 +255,8 @@ export default function AdminPage() {
 
     try {
       const response = await fetch(`/api/admin/state-costs/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: authHeaders(),
       });
 
       if (!response.ok) throw new Error('Failed to delete item');
@@ -307,6 +321,7 @@ export default function AdminPage() {
     try {
       const response = await fetch('/api/admin/state-costs/upload', {
         method: 'POST',
+        headers: authHeaders(),
         body: formData
       });
 
@@ -361,7 +376,8 @@ export default function AdminPage() {
 
     try {
       const response = await fetch(`/api/admin/users/${userId}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: authHeaders(),
       });
 
       if (!response.ok) throw new Error('Failed to delete user');
@@ -423,7 +439,7 @@ export default function AdminPage() {
       
       const response = await fetch(`/api/admin/cost-categories${isNewCategory ? '' : `/${id}`}`, {
         method: isNewCategory ? 'POST' : 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({
           name: category.name.trim(),
           description: category.description?.trim() || '',
@@ -485,7 +501,8 @@ export default function AdminPage() {
 
     try {
       const response = await fetch(`/api/admin/cost-categories/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: authHeaders(),
       });
 
       if (!response.ok) {

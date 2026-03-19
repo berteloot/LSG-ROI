@@ -1,7 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { rateLimit } from "@/lib/rate-limit";
+
+/** Escape HTML special characters to prevent XSS in email templates */
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
 
 export async function POST(req: NextRequest) {
+  // Rate limit: 10 submissions per minute per IP
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (!rateLimit(ip, 10)) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await req.json();
     const {
@@ -131,13 +151,10 @@ export async function POST(req: NextRequest) {
       leadId: lead.id
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error submitting lead:", error);
     return NextResponse.json(
-      { 
-        error: "Failed to submit lead",
-        details: error?.message || "Unknown error"
-      },
+      { error: "Failed to submit lead" },
       { status: 500 }
     );
   }
@@ -236,7 +253,7 @@ async function sendCalculationEmail(data: {
         </div>
         
         <div class="content">
-          <p>Dear ${companyName} Team,</p>
+          <p>Dear ${escapeHtml(companyName)} Team,</p>
           
           <p>Thank you for using our LSG vs In-House Cost Calculator. We've analyzed your business operations and prepared a detailed cost comparison.</p>
           
@@ -249,11 +266,11 @@ async function sendCalculationEmail(data: {
           <div class="details-grid">
             <div class="detail-item">
               <div class="detail-label">State</div>
-              <div class="detail-value">${state}</div>
+              <div class="detail-value">${escapeHtml(state)}</div>
             </div>
             <div class="detail-item">
               <div class="detail-label">Role Category</div>
-              <div class="detail-value">${selectedRole}</div>
+              <div class="detail-value">${escapeHtml(selectedRole)}</div>
             </div>
             <div class="detail-item">
               <div class="detail-label">Monthly Salary per FTE</div>
